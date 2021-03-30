@@ -122,8 +122,13 @@
               "devServerTarget": "style-transfer-validation-prototype:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "style-transfer-validation-prototype"
 }

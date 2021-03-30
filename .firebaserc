@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "petai-validation"
+  },
+  "targets": {
+    "petai-validation": {
+      "hosting": {
+        "style-transfer-validation-prototype": [
+          "petai-validation"
+        ]
+      }
+    }
+  }
+}
