@@ -9,12 +9,19 @@
     >
       <img src="/assets/icons/image-add.svg" alt="" />
     </button>
+    <button
+      *ngIf="uploadedImage"
+      [class.btn-hide]="selectedStyleIndex === undefined"
+      class="apply-style-btn"
+    >
+      Apply {{ styleImages[selectedStyleIndex]?.artist }} Style
+    </button>
 
-    <h2>Choose Style</h2>
+    <h2 *ngIf="uploadedImage">Choose Style</h2>
     <div
       [class.animate__fadeInUpBig]="!isHorizontalMode"
       [class.animate__fadeInRightBig]="isHorizontalMode"
-      *ngIf="!imageActive && styleImages?.length > 0"
+      *ngIf="!imageActive && styleImages?.length > 0 && uploadedImage"
       class="animate__animated swiper-container swiper-img-style style-swiper"
       #styleSwiper
     >
@@ -28,18 +35,16 @@
       </div>
     </div>
 
-    <h2>Artworks with this Style</h2>
+    <h2 *ngIf="uploadedImage">Artworks with this Style</h2>
 
     <div
+      *ngIf="uploadedImage"
       class="animate__animated swiper-container swiper-img-style img-swiper"
       #imgSwiper
       [class.animate__fadeInUpBig]="!isHorizontalMode"
       [class.animate__fadeInRightBig]="isHorizontalMode"
     >
       <div class="swiper-wrapper">
-        <div *ngIf="isUploadingImage" class="swiper-slide loading-container">
-          <img src="/assets/icons/loading-anim.svg" alt="lädt hoch" />
-        </div>
         <img
           *ngFor="let contentImage of contentImages; let i = index"
           [src]="contentImage.image.publicUrl"

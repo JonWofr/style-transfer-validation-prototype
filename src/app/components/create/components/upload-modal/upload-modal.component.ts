@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./upload-modal.component.scss'],
 })
 export class UploadModalComponent implements OnInit {
-  @Output() uploadedImage = new EventEmitter<File | null>();
+  @Output() uploadedImage = new EventEmitter<File | string | null>();
 
   constructor() {}
 
@@ -16,10 +16,28 @@ export class UploadModalComponent implements OnInit {
 
   onChange(event: any) {
     let imageFile = event.target.files[0];
-    this.uploadedImage.emit(imageFile);
+    this.previewFile(imageFile);
   }
 
   onClose() {
     this.uploadedImage.emit(null);
+  }
+
+  previewFile(file: File) {
+    const reader = new FileReader();
+
+    reader.addEventListener(
+      'load',
+      () => {
+        // convert image file to base64 string
+        let img64 = reader.result as string;
+        this.uploadedImage.emit(img64);
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   }
 }

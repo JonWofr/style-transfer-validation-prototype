@@ -52,6 +52,7 @@ export class ImageStyleSliderComponent implements OnInit {
   @Input() styleImages: StyleImage[] = [];
 
   _isUploadingImage: boolean;
+  @Input() uploadedImage = false;
 
   showAttentionSeekerUpload = true;
 

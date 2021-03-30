@@ -15,6 +15,7 @@
   [contentImages]="contentImages"
   [styleImages]="styleImages"
   [isUploadingImage]="isUploadingImage"
+  [uploadedImage]="'/assets/images/upload-picture.svg' != imageSrc"
   (selectedStyleIndexChange)="selectedStyle($event)"
   (addImageBtnClicked)="openUploadModal()"
   class="slider"

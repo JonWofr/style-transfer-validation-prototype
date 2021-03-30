@@ -101,8 +101,16 @@ export class CreateComponent implements OnInit {
     this.showUploadModal = true;
   }
 
-  uploadImage(imageFile: File | null) {
+  uploadImage(imageFile: File | string | null) {
     this.showUploadModal = false;
+    if (imageFile) {
+      const resource = new FormData();
+      resource.append('name', 'test');
+      resource.append('contentImage', imageFile);
+
+      this.isUploadingImage = true;
+      this.imageSrc = imageFile as string;
+    }
   }
 
   selectedStyle(index: number) {
