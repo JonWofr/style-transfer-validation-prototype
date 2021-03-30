@@ -1,0 +1,233 @@
+@import "../../../../../colors.scss";
+div.slider-wrapper {
+  width: 100%;
+  background-color: $darkest-font-color;
+  border-radius: 15px 15px 0 0;
+  padding: 2rem 0 2rem 1rem;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+h2 {
+  font-family: "pf-reg";
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+div.overflow-hide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+div.loading-indicator {
+  width: 50%;
+  flex: 1;
+  height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    border-radius: 10px;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.swiper-img-style {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 2.5rem;
+}
+
+.swiper-img-style.img-swiper {
+  height: 300px;
+  .swiper-slide {
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+    opacity: 0.6;
+    transition: 300ms;
+
+    &.selected {
+      opacity: 1;
+    }
+
+    &.loading-container {
+      width: 33%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+      background-color: #f1f2f3;
+      opacity: 1;
+
+      img {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 0;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.swiper-img-style.style-swiper {
+  .swiper-slide {
+    cursor: pointer;
+    height: 100%;
+    width: auto;
+    overflow: unset;
+  }
+}
+
+.img-style-toggle {
+  width: 100%;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  button.toggle-btn {
+    outline: none;
+    background-color: transparent;
+    border: 2px solid aliceblue;
+    font-family: m-bold;
+    font-size: 1rem;
+    color: aliceblue;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: 200ms;
+    width: 50%;
+
+    &.toggle-active {
+      background-color: aliceblue;
+      color: $darkest-font-color;
+    }
+  }
+}
+
+button.finished-btn {
+  margin-top: 2rem;
+  outline: none;
+  background-color: $primary-color;
+  border: none;
+  font-family: m-bold;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  color: aliceblue;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: 200ms;
+  height: unset;
+  width: calc(100% - 1rem);
+
+  &.low-visibility {
+    opacity: 0.5;
+  }
+}
+
+button.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -6rem;
+  left: 1rem;
+  position: absolute;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-size: 4rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: m-reg;
+  background-color: $primary-color;
+  z-index: -1;
+  transition: 500ms;
+  box-shadow: 0px 3px 6px #00000029;
+
+  img {
+    width: 3rem;
+  }
+
+  &.add-btn-hide {
+    left: -100%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  div.loading-indicator {
+    width: 100%;
+    flex: 1;
+    width: 0;
+
+    img {
+      margin-bottom: auto;
+      height: auto;
+    }
+  }
+
+  div.slider-wrapper {
+    padding: 2rem;
+    padding-bottom: 0;
+
+    .swiper-img-style.img-swiper {
+      .swiper-slide {
+        height: auto;
+        width: 100%;
+        &:not(.selected):hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    .swiper-img-style.style-swiper {
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        height: fit-content;
+        width: calc(50% - 16px);
+      }
+    }
+
+    div.img-style-toggle {
+      padding-right: 0;
+    }
+    button.finished-btn {
+      display: none;
+    }
+
+    button.add-btn {
+      top: 1rem;
+      left: unset;
+      right: -7rem;
+
+      &.add-btn-hide {
+        top: -100%;
+      }
+    }
+  }
+}

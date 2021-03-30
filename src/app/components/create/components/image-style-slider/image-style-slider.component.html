@@ -1,0 +1,52 @@
+<div class="slider-wrapper">
+  <div class="overflow-hide">
+    <button
+      class="add-btn"
+      [ngClass]="{
+        'animate__animated animate__pulse animate__infinite': showAttentionSeekerUpload
+      }"
+      (click)="openUploadModal()"
+    >
+      <img src="/assets/icons/image-add.svg" alt="" />
+    </button>
+
+    <h2>Choose Style</h2>
+    <div
+      [class.animate__fadeInUpBig]="!isHorizontalMode"
+      [class.animate__fadeInRightBig]="isHorizontalMode"
+      *ngIf="!imageActive && styleImages?.length > 0"
+      class="animate__animated swiper-container swiper-img-style style-swiper"
+      #styleSwiper
+    >
+      <div class="swiper-wrapper">
+        <shared-style-circle
+          *ngFor="let styleImage of styleImages"
+          [styleImage]="styleImage"
+          [verticalLayout]="!isHorizontalMode"
+          class="swiper-slide"
+        ></shared-style-circle>
+      </div>
+    </div>
+
+    <h2>Artworks with this Style</h2>
+
+    <div
+      class="animate__animated swiper-container swiper-img-style img-swiper"
+      #imgSwiper
+      [class.animate__fadeInUpBig]="!isHorizontalMode"
+      [class.animate__fadeInRightBig]="isHorizontalMode"
+    >
+      <div class="swiper-wrapper">
+        <div *ngIf="isUploadingImage" class="swiper-slide loading-container">
+          <img src="/assets/icons/loading-anim.svg" alt="lädt hoch" />
+        </div>
+        <img
+          *ngFor="let contentImage of contentImages; let i = index"
+          [src]="contentImage.image.publicUrl"
+          alt=""
+          class="swiper-slide selected"
+        />
+      </div>
+    </div>
+  </div>
+</div>
