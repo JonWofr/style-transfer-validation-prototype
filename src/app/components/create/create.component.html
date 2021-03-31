@@ -12,6 +12,7 @@
 </div>
 
 <create-image-style-slider
+  *ngIf="false"
   [contentImages]="contentImages"
   [styleImages]="styleImages"
   [isUploadingImage]="isUploadingImage"
@@ -20,6 +21,16 @@
   (addImageBtnClicked)="openUploadModal()"
   class="slider"
 ></create-image-style-slider>
+
+<create-submit
+  *ngIf="true"
+  [styleImageName]="'Jungle'"
+  [styleImageUrl]="
+    'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg'
+  "
+  (submitForm)="onSubmitForm($event)"
+>
+</create-submit>
 
 <create-upload-modal
   *ngIf="showUploadModal"

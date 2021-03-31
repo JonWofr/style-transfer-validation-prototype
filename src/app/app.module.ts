@@ -7,6 +7,7 @@ import { CreateModule } from './components/create/create.module';
 import { CreateComponent } from './components/create/create.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     CreateModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     AngularFirestoreModule,
   ],
   providers: [],

@@ -2,6 +2,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { slideInOutBottom } from 'src/app/components/shared/animations';
 import { ContentImage } from '../../models/content-image.model';
 import { StyleImage } from '../../models/style-image.model';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { StylizationJob } from 'src/app/models/stylization-job.model';
 
 @Component({
   selector: 'page-create',
@@ -10,7 +13,10 @@ import { StyleImage } from '../../models/style-image.model';
   animations: [slideInOutBottom],
 })
 export class CreateComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private auth: AngularFireAuth,
+    private firestore: AngularFirestore
+  ) {}
 
   imageSrc = '/assets/images/upload-picture.svg';
   showUploadModal = false;
@@ -124,4 +130,26 @@ export class CreateComponent implements OnInit {
   }
 
   fitStyle(element) {}
+
+  async onSubmitForm(email: string) {
+    let user = await this.auth.currentUser;
+    // If the user deletes all application data after the site has been loaded
+    if (user === null) {
+      user = (await this.auth.signInAnonymously()).user;
+    }
+
+    const collectionRef = this.firestore.collection('stylization-jobs').ref;
+    const query = await collectionRef.where('userId', '==', user.uid).get();
+    if (query.size < 3) {
+      const stylizationJob: StylizationJob = {
+        userId: user.uid,
+        email,
+        contentImageUrl: '',
+        styleImageUrl: '',
+      };
+      collectionRef.add(stylizationJob);
+    } else {
+      console.log('The maximum number has been reached for this device');
+    }
+  }
 }

@@ -9,14 +9,19 @@ export class SubmitComponent implements OnInit {
   @Input() styleImageName: string;
   @Input() styleImageUrl: string;
   @Output() submitForm = new EventEmitter<string>();
-  email = '';
+  email?: string;
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  onChangeEmail(email: string) {
+    this.email = email;
+  }
+
   onSubmitForm(submitEvent: Event) {
     submitEvent.preventDefault();
+
     this.submitForm.emit(this.email);
   }
 }
