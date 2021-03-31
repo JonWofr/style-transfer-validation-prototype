@@ -1,0 +1,22 @@
+<div class="header">
+  <h2>{{ hasCreatedNewDocument ? "Success" : "Ooops" }}</h2>
+  <img
+    (click)="closeModal.emit()"
+    src="/assets/icons/close.svg"
+    alt="close button"
+  />
+</div>
+<p>
+  {{
+    hasCreatedNewDocument
+      ? "We will send you the stylized version within a few hours."
+      : "You have already submitted the maximum number of images."
+  }}
+</p>
+<button
+  [disabled]="submittedImagesCount >= maxSubmittedImagesCount"
+  (click)="clickSendAnotherButton.emit()"
+>
+  Send another
+  <span>({{ maxSubmittedImagesCount - submittedImagesCount }} remaining)</span>
+</button>

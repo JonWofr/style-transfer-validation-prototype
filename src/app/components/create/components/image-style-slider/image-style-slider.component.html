@@ -22,6 +22,7 @@
     [styleImageName]="styleImages[selectedStyleIndex]?.artist"
     [styleImageUrl]="styleImages[selectedStyleIndex]?.image.publicUrl"
     *ngIf="fitStyleView"
+    (submitForm)="submitForm.emit($event)"
   ></create-submit>
 
   <div class="overflow-hide" *ngIf="!fitStyleView">

@@ -40,13 +40,13 @@ SwiperCore.use([
 export class ImageStyleSliderComponent implements OnInit {
   constructor(private route: Router) {}
 
-  @Output() addImageBtnClicked = new EventEmitter<void>();
+  @Output() clickAddImageButton = new EventEmitter<void>();
 
   @Input() selectedImageIndex = 0;
   @Output() selectedImageIndexChange = new EventEmitter<number>();
 
   @Input() selectedStyleIndex: number;
-  @Output() selectedStyleIndexChange = new EventEmitter<number>();
+  @Output() changeSelectedStyleIndex = new EventEmitter<number>();
 
   @Input() contentImages: ContentImage[] = [];
   @Input() styleImages: StyleImage[] = [];
@@ -71,10 +71,12 @@ export class ImageStyleSliderComponent implements OnInit {
     return this._isUploadingImage;
   }
 
+  @Output() submitForm = new EventEmitter<string>();
+
   updateSelectedStyleIndex(index: number) {
     if (index !== undefined) {
       this.selectedStyleIndex = index;
-      this.selectedStyleIndexChange.emit(index);
+      this.changeSelectedStyleIndex.emit(index);
       setTimeout(() => {
         this.imgSwiper.update();
         this.imgSwiper.slideTo(0);
@@ -90,7 +92,7 @@ export class ImageStyleSliderComponent implements OnInit {
   }
 
   openUploadModal() {
-    this.addImageBtnClicked.emit();
+    this.clickAddImageButton.emit();
     this.showAttentionSeekerUpload = false;
   }
 

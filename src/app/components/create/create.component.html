@@ -12,31 +12,32 @@
 </div>
 
 <create-image-style-slider
-  *ngIf="false"
   [contentImages]="contentImages"
   [styleImages]="styleImages"
   [isUploadingImage]="isUploadingImage"
   [uploadedImage]="'/assets/images/upload-picture.svg' != imageSrc"
-  (selectedStyleIndexChange)="selectedStyle($event)"
-  (addImageBtnClicked)="openUploadModal()"
+  (changeSelectedStyleIndex)="onChangeSelectedStyleIndex($event)"
+  (clickAddImageButton)="toggleUploadModal(true)"
+  (submitForm)="onSubmitForm($event)"
   class="slider"
 ></create-image-style-slider>
 
-<create-submit
-  *ngIf="true"
-  [styleImageName]="'Jungle'"
-  [styleImageUrl]="
-    'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg'
-  "
-  (submitForm)="onSubmitForm($event)"
->
-</create-submit>
-
 <create-upload-modal
-  *ngIf="showUploadModal"
-  (uploadedImage)="uploadImage($event)"
+  *ngIf="shouldShowUploadModal"
+  (selectFile)="onSelectFile($event)"
+  (closeModal)="toggleUploadModal(false)"
   [@slideInOutBottom]
 ></create-upload-modal>
+
+<create-response-modal
+  *ngIf="shouldShowResponseModal"
+  [hasCreatedNewDocument]="hasCreatedNewDocument"
+  [submittedImagesCount]="submittedImagesCount"
+  [maxSubmittedImagesCount]="maxSubmittedImagesCount"
+  (closeModal)="toggleResponseModal(false)"
+  (clickSendAnotherButton)="onClickSendAnotherButton()"
+  [@slideInOutBottom]
+></create-response-modal>
 
 <div class="only-mobile-info">
   <p>

@@ -8,6 +8,7 @@ import { CreateComponent } from './components/create/create.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -20,8 +21,9 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [{ provide: BUCKET, useValue: 'petai-validation.appspot.com' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

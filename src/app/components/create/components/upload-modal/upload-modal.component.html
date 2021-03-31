@@ -1,7 +1,11 @@
 <div class="image-upload">
   <div class="header">
     <h2>Bild hochladen</h2>
-    <img (click)="onClose()" src="/assets/icons/close.svg" alt="close button" />
+    <img
+      (click)="closeModal.emit()"
+      src="/assets/icons/close.svg"
+      alt="close button"
+    />
   </div>
 
   <div
@@ -10,9 +14,10 @@
   >
     Upload
     <input
+      #fileInput
       type="file"
       accept="image/*"
-      (change)="onChange($event)"
+      (change)="selectFile.emit(fileInput.files[0])"
       [disabled]="!dataProtectionChecked"
     />
   </div>
