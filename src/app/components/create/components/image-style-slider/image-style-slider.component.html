@@ -1,22 +1,30 @@
 <div class="slider-wrapper">
-  <div class="overflow-hide">
-    <button
-      class="add-btn"
-      [ngClass]="{
-        'animate__animated animate__pulse animate__infinite': showAttentionSeekerUpload
-      }"
-      (click)="openUploadModal()"
-    >
-      <img src="/assets/icons/image-add.svg" alt="" />
-    </button>
-    <button
-      *ngIf="uploadedImage"
-      [class.btn-hide]="selectedStyleIndex === undefined"
-      class="apply-style-btn"
-    >
-      Apply {{ styleImages[selectedStyleIndex]?.artist }} Style
-    </button>
+  <button
+    class="add-btn"
+    [class.add-btn-hide]="fitStyleView"
+    [ngClass]="{
+      'animate__animated animate__pulse animate__infinite': showAttentionSeekerUpload
+    }"
+    (click)="openUploadModal()"
+  >
+    <img src="/assets/icons/image-add.svg" alt="" />
+  </button>
+  <button
+    [class.btn-hide]="selectedStyleIndex === undefined"
+    [class.btn-back]="fitStyleView"
+    class="apply-style-btn"
+    (click)="fitStyleBtnClicked($event)"
+  >
+    Apply {{ styleImages[selectedStyleIndex]?.artist }} Style
+  </button>
 
+  <create-submit
+    [styleImageName]="styleImages[selectedStyleIndex]?.artist"
+    [styleImageUrl]="styleImages[selectedStyleIndex]?.image.publicUrl"
+    *ngIf="fitStyleView"
+  ></create-submit>
+
+  <div class="overflow-hide" *ngIf="!fitStyleView">
     <h2 *ngIf="uploadedImage">Choose Style</h2>
     <div
       [class.animate__fadeInUpBig]="!isHorizontalMode"
@@ -35,10 +43,11 @@
       </div>
     </div>
 
-    <h2 *ngIf="uploadedImage">Artworks with this Style</h2>
+    <h2 *ngIf="selectedStyleIndex !== undefined">Artworks with this Style</h2>
+    <h2 *ngIf="!uploadedImage">Created Artworks</h2>
 
     <div
-      *ngIf="uploadedImage"
+      *ngIf="selectedStyleIndex !== undefined || !uploadedImage"
       class="animate__animated swiper-container swiper-img-style img-swiper"
       #imgSwiper
       [class.animate__fadeInUpBig]="!isHorizontalMode"

@@ -32,6 +32,10 @@ button.finished-btn {
   }
 }
 
+.only-mobile-info {
+  display: none;
+}
+
 @media (min-width: 720px) {
   .container {
     padding-left: 10%;
@@ -42,6 +46,26 @@ button.finished-btn {
 @media (min-width: 1000px) {
   :host {
     flex-direction: row;
+  }
+
+  .only-mobile-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #000000af;
+    backdrop-filter: blur(5px);
+    left: 0;
+    top: 0;
+    p {
+      text-align: center;
+      width: 80%;
+      font-size: 3rem;
+      color: white;
+      font-family: m-bold;
+    }
   }
 
   .gray-background-box {

@@ -3,7 +3,7 @@ div.slider-wrapper {
   width: 100%;
   background-color: $darkest-font-color;
   border-radius: 20px 20px 0 0;
-  padding: 2rem 0 2rem 1rem;
+  padding: 2rem 0 0 1rem;
   box-sizing: border-box;
   position: relative;
   height: 100%;
@@ -194,7 +194,12 @@ button.add-btn {
   overflow: hidden;
 
   &.btn-hide {
-    top: -100%;
+    top: -200%;
+  }
+
+  &.btn-back {
+    width: 30%;
+    right: calc(100% - 30% - 1rem);
   }
 }
 

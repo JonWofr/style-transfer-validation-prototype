@@ -87,14 +87,7 @@ export class CreateComponent implements OnInit {
   isApplyingStyle = false;
 
   ngOnInit(): void {
-    this.contentImages = this.stylizedImages.filter((image) => {
-      console.log('done');
-      return (
-        image.image.appliedStyle ==
-        this.styleImages[this.selectedStyleImageIndex].artist
-      );
-    });
-    console.log('hello');
+    this.contentImages = this.stylizedImages;
   }
 
   openUploadModal() {
