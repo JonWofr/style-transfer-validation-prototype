@@ -94,6 +94,14 @@ export class ImageStyleSliderComponent implements OnInit {
     this.showAttentionSeekerUpload = false;
   }
 
+  fitStyleView = false;
+  fitStyleBtnClicked(event) {
+    this.fitStyleView = !this.fitStyleView;
+    event.target.innerHTML = this.fitStyleView
+      ? 'Back'
+      : 'Apply ' + this.styleImages[this.selectedStyleIndex]?.artist + ' Style';
+  }
+
   isHorizontalMode = true;
 
   imgSwiper: Swiper;
