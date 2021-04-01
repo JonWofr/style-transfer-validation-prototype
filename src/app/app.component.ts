@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'style-transfer-validation-prototype';
+  title = 'PetAI';
 
   constructor(private auth: AngularFireAuth) {
     this.auth.onAuthStateChanged((user) => {

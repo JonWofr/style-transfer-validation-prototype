@@ -11,7 +11,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import {
   AngularFireAnalyticsModule,
-  DEBUG_MODE,
   ScreenTrackingService,
   UserTrackingService,
 } from '@angular/fire/analytics';
@@ -32,7 +31,6 @@ import { environment } from '../environments/environment';
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
-    { provide: DEBUG_MODE, useValue: true },
     ScreenTrackingService,
     UserTrackingService,
   ],

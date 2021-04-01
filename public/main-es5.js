@@ -66,8 +66,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
 
-    var routes = [];
+
+    var _components_create_create_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./components/create/create.component */
+    "./src/app/components/create/create.component.ts");
+
+    var routes = [{
+      path: '',
+      component: _components_create_create_component__WEBPACK_IMPORTED_MODULE_2__["CreateComponent"]
+    }, {
+      path: '**',
+      redirectTo: ''
+    }];
 
     var AppRoutingModule = function AppRoutingModule() {
       _classCallCheck(this, AppRoutingModule);
@@ -139,9 +151,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _components_create_create_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./components/create/create.component */
-    "./src/app/components/create/create.component.ts");
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var AppComponent = function AppComponent(auth) {
       var _this = this;
@@ -149,7 +161,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, AppComponent);
 
       this.auth = auth;
-      this.title = 'style-transfer-validation-prototype';
+      this.title = 'PetAI';
       this.auth.onAuthStateChanged(function (user) {
         if (!user) {
           _this.auth.signInAnonymously();
@@ -168,10 +180,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       vars: 0,
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "page-create");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "router-outlet");
         }
       },
-      directives: [_components_create_create_component__WEBPACK_IMPORTED_MODULE_2__["CreateComponent"]],
+      directives: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterOutlet"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"]
     });
     /*@__PURE__*/
@@ -282,7 +294,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _environments_environment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/fire/analytics */
+    "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-analytics.js");
+    /* harmony import */
+
+
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ../environments/environment */
     "./src/environments/environment.ts");
 
@@ -301,14 +319,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       providers: [{
         provide: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["BUCKET"],
         useValue: 'petai-validation.appspot.com'
-      }],
-      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"]]]
+      }, _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["ScreenTrackingService"], _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["UserTrackingService"]],
+      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"], _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["AngularFireAnalyticsModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_create_create_component__WEBPACK_IMPORTED_MODULE_6__["CreateComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"]]
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"], _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["AngularFireAnalyticsModule"]]
       });
     })();
     /*@__PURE__*/
@@ -319,11 +337,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
           declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _components_create_create_component__WEBPACK_IMPORTED_MODULE_6__["CreateComponent"]],
-          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"]],
+          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _components_create_create_module__WEBPACK_IMPORTED_MODULE_5__["CreateModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_7__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebaseConfig), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_9__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestoreModule"], _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["AngularFireStorageModule"], _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["AngularFireAnalyticsModule"]],
           providers: [{
             provide: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_10__["BUCKET"],
             useValue: 'petai-validation.appspot.com'
-          }],
+          }, _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["ScreenTrackingService"], _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_11__["UserTrackingService"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         }]
       }], null, null);
@@ -583,8 +601,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.styleImages = [];
         this.uploadedImage = false;
         this.showAttentionSeekerUpload = true;
+        this.shouldShowFitStyleView = false;
+        this.changeShouldShowFitStyleView = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.submitForm = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.fitStyleView = false;
         this.isHorizontalMode = true;
         this.imageActive = false;
       }
@@ -608,43 +627,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this._isUploadingImage = uploading;
         }
       }, {
-        key: "updateSelectedStyleIndex",
-        value: function updateSelectedStyleIndex(index) {
-          var _this3 = this;
-
-          if (index !== undefined) {
-            this.selectedStyleIndex = index;
-            this.changeSelectedStyleIndex.emit(index);
-            setTimeout(function () {
-              _this3.imgSwiper.update();
-
-              _this3.imgSwiper.slideTo(0);
-            }, 200);
-          }
-        }
-      }, {
-        key: "updateSelectedImageIndex",
-        value: function updateSelectedImageIndex(index) {
-          if (index !== undefined) {
-            this.selectedImageIndex = index;
-            this.selectedImageIndexChange.emit(index);
-          }
-        }
-      }, {
-        key: "openUploadModal",
-        value: function openUploadModal() {
-          this.clickAddImageButton.emit();
-          this.showAttentionSeekerUpload = false;
-        }
-      }, {
-        key: "fitStyleBtnClicked",
-        value: function fitStyleBtnClicked(event) {
-          var _a;
-
-          this.fitStyleView = !this.fitStyleView;
-          event.target.innerHTML = this.fitStyleView ? 'Back' : 'Apply ' + ((_a = this.styleImages[this.selectedStyleIndex]) === null || _a === void 0 ? void 0 : _a.artist) + ' Style';
-        }
-      }, {
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
@@ -653,7 +635,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "_imgSwiper",
         set: function set(el) {
-          var _this4 = this;
+          var _this3 = this;
 
           if (el) {
             this.imgSwiper = new swiper_core__WEBPACK_IMPORTED_MODULE_1__["Swiper"]('.img-swiper', {
@@ -665,7 +647,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               on: {
                 afterInit: function afterInit() {
                   setTimeout(function () {
-                    _this4.imgSwiper.update();
+                    _this3.imgSwiper.update();
                   });
                 }
               },
@@ -681,7 +663,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "_styleSwiper",
         set: function set(el) {
-          var _this5 = this;
+          var _this4 = this;
 
           if (el) {
             this.styleSwiper = new swiper_core__WEBPACK_IMPORTED_MODULE_1__["Swiper"]('.style-swiper', {
@@ -700,11 +682,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               },
               on: {
                 click: function click(swiper) {
-                  _this5.updateSelectedStyleIndex(swiper.clickedIndex);
+                  _this4.updateSelectedStyleIndex(swiper.clickedIndex);
                 },
                 afterInit: function afterInit() {
                   setTimeout(function () {
-                    _this5.styleSwiper.update();
+                    _this4.styleSwiper.update();
                   });
                 }
               }
@@ -725,6 +707,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             alert('please select a style first');
           }
+        }
+      }, {
+        key: "updateSelectedStyleIndex",
+        value: function updateSelectedStyleIndex(index) {
+          var _this5 = this;
+
+          if (index !== undefined) {
+            this.selectedStyleIndex = index;
+            this.changeSelectedStyleIndex.emit(index);
+            setTimeout(function () {
+              _this5.imgSwiper.update();
+
+              _this5.imgSwiper.slideTo(0);
+            }, 200);
+          }
+        }
+      }, {
+        key: "updateSelectedImageIndex",
+        value: function updateSelectedImageIndex(index) {
+          if (index !== undefined) {
+            this.selectedImageIndex = index;
+            this.selectedImageIndexChange.emit(index);
+          }
+        }
+      }, {
+        key: "openUploadModal",
+        value: function openUploadModal() {
+          this.clickAddImageButton.emit();
+          this.showAttentionSeekerUpload = false;
         }
       }]);
 
@@ -761,12 +772,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         contentImages: "contentImages",
         styleImages: "styleImages",
         uploadedImage: "uploadedImage",
+        shouldShowFitStyleView: "shouldShowFitStyleView",
         isUploadingImage: "isUploadingImage"
       },
       outputs: {
         clickAddImageButton: "clickAddImageButton",
         selectedImageIndexChange: "selectedImageIndexChange",
         changeSelectedStyleIndex: "changeSelectedStyleIndex",
+        changeShouldShowFitStyleView: "changeShouldShowFitStyleView",
         submitForm: "submitForm"
       },
       decls: 7,
@@ -788,8 +801,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ImageStyleSliderComponent_Template_button_click_3_listener($event) {
-            return ctx.fitStyleBtnClicked($event);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ImageStyleSliderComponent_Template_button_click_3_listener() {
+            return ctx.changeShouldShowFitStyleView.emit(!ctx.shouldShowFitStyleView);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
@@ -806,25 +819,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("add-btn-hide", ctx.fitStyleView);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("add-btn-hide", ctx.shouldShowFitStyleView);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](10, _c3, ctx.showAttentionSeekerUpload));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-hide", ctx.selectedStyleIndex === undefined)("btn-back", ctx.fitStyleView);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("btn-hide", ctx.selectedStyleIndex === undefined)("btn-back", ctx.shouldShowFitStyleView);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Apply ", ctx.styleImages[ctx.selectedStyleIndex] == null ? null : ctx.styleImages[ctx.selectedStyleIndex].artist, " Style ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.shouldShowFitStyleView ? "Back" : (ctx.styleImages[ctx.selectedStyleIndex] == null ? null : ctx.styleImages[ctx.selectedStyleIndex].artist) + "Style", " ");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.fitStyleView);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.shouldShowFitStyleView);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.fitStyleView);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.shouldShowFitStyleView);
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _submit_submit_component__WEBPACK_IMPORTED_MODULE_4__["SubmitComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _shared_components_style_circle_style_circle_component__WEBPACK_IMPORTED_MODULE_5__["StyleCircleComponent"]],
@@ -868,6 +881,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }],
         uploadedImage: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        shouldShowFitStyleView: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        changeShouldShowFitStyleView: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
         }],
         isUploadingImage: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -1479,25 +1498,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/fire/analytics */
+    "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-analytics.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_image_style_slider_image_style_slider_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _components_image_style_slider_image_style_slider_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ./components/image-style-slider/image-style-slider.component */
     "./src/app/components/create/components/image-style-slider/image-style-slider.component.ts");
     /* harmony import */
 
 
-    var _components_upload_modal_upload_modal_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _components_upload_modal_upload_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ./components/upload-modal/upload-modal.component */
     "./src/app/components/create/components/upload-modal/upload-modal.component.ts");
     /* harmony import */
 
 
-    var _components_response_modal_response_modal_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _components_response_modal_response_modal_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./components/response-modal/response-modal.component */
     "./src/app/components/create/components/response-modal/response-modal.component.ts");
 
@@ -1566,15 +1591,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     var CreateComponent = /*#__PURE__*/function () {
-      function CreateComponent(auth, firestore, storage) {
+      function CreateComponent(auth, firestore, storage, analytics) {
         _classCallCheck(this, CreateComponent);
 
         this.auth = auth;
         this.firestore = firestore;
         this.storage = storage;
+        this.analytics = analytics;
         this.imageSrc = '/assets/images/upload-picture.svg';
         this.shouldShowUploadModal = false;
         this.shouldShowResponseModal = false;
+        this.shouldShowFitStyleView = false;
         this.contentImages = [];
         this.selectedContentImageIndex = 0;
         this.stylizedImages = [{
@@ -1705,7 +1732,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "onSubmitForm",
         value: function onSubmitForm(email) {
           return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var userId, colRef, query, querySize, contentImagePublicUrl, stylizationJob;
+            var userId, colRef, query, querySize, contentImagePublicUrl, selectedStyleImage, stylizationJob;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
@@ -1725,50 +1752,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     querySize = query.size;
 
                     if (!(querySize < 3)) {
-                      _context2.next = 20;
+                      _context2.next = 24;
                       break;
                     }
 
-                    _context2.next = 12;
+                    this.isApplyingStyle = true;
+                    _context2.next = 13;
                     return this.uploadFile(this.selectedFile);
 
-                  case 12:
+                  case 13:
                     contentImagePublicUrl = _context2.sent;
+                    selectedStyleImage = this.styleImages[this.selectedStyleImageIndex];
                     stylizationJob = {
                       userId: userId,
                       email: email,
                       contentImagePublicUrl: contentImagePublicUrl,
-                      styleImagePublicUrl: this.styleImages[this.selectedStyleImageIndex].image.publicUrl
+                      styleImagePublicUrl: selectedStyleImage.image.publicUrl
                     };
-                    _context2.next = 16;
+                    _context2.next = 18;
                     return colRef.add(stylizationJob);
 
-                  case 16:
+                  case 18:
                     this.hasCreatedNewDocument = true;
                     this.submittedImagesCount = querySize + 1;
-                    _context2.next = 22;
+                    this.isApplyingStyle = false;
+                    this.analytics.logEvent('purchase', {
+                      value: selectedStyleImage.artist
+                    });
+                    _context2.next = 26;
                     break;
 
-                  case 20:
+                  case 24:
                     this.hasCreatedNewDocument = false;
                     this.submittedImagesCount = querySize;
 
-                  case 22:
+                  case 26:
                     this.toggleResponseModal(true);
-                    _context2.next = 28;
+                    _context2.next = 32;
                     break;
 
-                  case 25:
-                    _context2.prev = 25;
+                  case 29:
+                    _context2.prev = 29;
                     _context2.t0 = _context2["catch"](0);
                     console.error(_context2.t0);
 
-                  case 28:
+                  case 32:
                   case "end":
                     return _context2.stop();
                 }
               }
-            }, _callee2, this, [[0, 25]]);
+            }, _callee2, this, [[0, 29]]);
           }));
         }
       }, {
@@ -1847,6 +1880,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "onClickSendAnotherButton",
         value: function onClickSendAnotherButton() {
           this.toggleResponseModal(false);
+          this.toggleFitStyleView(false);
+        }
+      }, {
+        key: "toggleFitStyleView",
+        value: function toggleFitStyleView(shouldShow) {
+          this.shouldShowFitStyleView = shouldShow;
         }
       }]);
 
@@ -1854,15 +1893,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     CreateComponent.ɵfac = function CreateComponent_Factory(t) {
-      return new (t || CreateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"]));
+      return new (t || CreateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_fire_analytics__WEBPACK_IMPORTED_MODULE_7__["AngularFireAnalytics"]));
     };
 
     CreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({
       type: CreateComponent,
       selectors: [["page-create"]],
       decls: 13,
-      vars: 10,
-      consts: [[1, "gray-background-box"], [1, "container"], [1, "square-ratio"], ["alt", "", 1, "selected-image", 3, "src"], ["src", "/assets/icons/loading-spinner.svg", "alt", "", 4, "ngIf"], [1, "finished-btn"], [1, "slider", 3, "contentImages", "styleImages", "isUploadingImage", "uploadedImage", "changeSelectedStyleIndex", "clickAddImageButton", "submitForm"], [3, "selectFile", "closeModal", 4, "ngIf"], [3, "hasCreatedNewDocument", "submittedImagesCount", "maxSubmittedImagesCount", "closeModal", "clickSendAnotherButton", 4, "ngIf"], [1, "only-mobile-info"], ["src", "/assets/icons/loading-spinner.svg", "alt", ""], [3, "selectFile", "closeModal"], [3, "hasCreatedNewDocument", "submittedImagesCount", "maxSubmittedImagesCount", "closeModal", "clickSendAnotherButton"]],
+      vars: 11,
+      consts: [[1, "gray-background-box"], [1, "container"], [1, "square-ratio"], ["alt", "", 1, "selected-image", 3, "src"], ["src", "/assets/icons/loading-spinner.svg", "alt", "", 4, "ngIf"], [1, "finished-btn"], [1, "slider", 3, "contentImages", "styleImages", "isUploadingImage", "uploadedImage", "shouldShowFitStyleView", "changeSelectedStyleIndex", "clickAddImageButton", "submitForm", "changeShouldShowFitStyleView"], [3, "selectFile", "closeModal", 4, "ngIf"], [3, "hasCreatedNewDocument", "submittedImagesCount", "maxSubmittedImagesCount", "closeModal", "clickSendAnotherButton", 4, "ngIf"], [1, "only-mobile-info"], ["src", "/assets/icons/loading-spinner.svg", "alt", ""], [3, "selectFile", "closeModal"], [3, "hasCreatedNewDocument", "submittedImagesCount", "maxSubmittedImagesCount", "closeModal", "clickSendAnotherButton"]],
       template: function CreateComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "div", 0);
@@ -1893,6 +1932,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return ctx.toggleUploadModal(true);
           })("submitForm", function CreateComponent_Template_create_image_style_slider_submitForm_7_listener($event) {
             return ctx.onSubmitForm($event);
+          })("changeShouldShowFitStyleView", function CreateComponent_Template_create_image_style_slider_changeShouldShowFitStyleView_7_listener($event) {
+            return ctx.toggleFitStyleView($event);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -1927,7 +1968,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("contentImages", ctx.contentImages)("styleImages", ctx.styleImages)("isUploadingImage", ctx.isUploadingImage)("uploadedImage", "/assets/images/upload-picture.svg" != ctx.imageSrc);
+          _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("contentImages", ctx.contentImages)("styleImages", ctx.styleImages)("isUploadingImage", ctx.isUploadingImage)("uploadedImage", "/assets/images/upload-picture.svg" != ctx.imageSrc)("shouldShowFitStyleView", ctx.shouldShowFitStyleView);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
 
@@ -1938,7 +1979,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.shouldShowResponseModal);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _components_image_style_slider_image_style_slider_component__WEBPACK_IMPORTED_MODULE_8__["ImageStyleSliderComponent"], _components_upload_modal_upload_modal_component__WEBPACK_IMPORTED_MODULE_9__["UploadModalComponent"], _components_response_modal_response_modal_component__WEBPACK_IMPORTED_MODULE_10__["ResponseModalComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_image_style_slider_image_style_slider_component__WEBPACK_IMPORTED_MODULE_9__["ImageStyleSliderComponent"], _components_upload_modal_upload_modal_component__WEBPACK_IMPORTED_MODULE_10__["UploadModalComponent"], _components_response_modal_response_modal_component__WEBPACK_IMPORTED_MODULE_11__["ResponseModalComponent"]],
       styles: ["[_nghost-%COMP%] {\n  height: 100%;\n  width: 100%;\n  display: flex;\n  flex-direction: column;\n  position: relative;\n  background-color: #1f2530;\n}\n\n.slider[_ngcontent-%COMP%] {\n  display: block;\n  flex: 1;\n  transform: translateY(-15px);\n}\n\n.container[_ngcontent-%COMP%] {\n  padding: 0;\n  background-color: white;\n}\n\nbutton.finished-btn[_ngcontent-%COMP%] {\n  display: none;\n}\n\n.applying-style[_ngcontent-%COMP%] {\n  transition: 500ms;\n  background-color: black;\n}\n\n.applying-style[_ngcontent-%COMP%]   .selected-image[_ngcontent-%COMP%] {\n  opacity: 0.5;\n}\n\n.only-mobile-info[_ngcontent-%COMP%] {\n  display: none;\n}\n\n@media (min-width: 720px) {\n  .container[_ngcontent-%COMP%] {\n    padding-left: 10%;\n    padding-right: 10%;\n  }\n}\n\n@media (min-width: 1000px) {\n  [_nghost-%COMP%] {\n    flex-direction: row;\n  }\n\n  .only-mobile-info[_ngcontent-%COMP%] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    position: fixed;\n    height: 100%;\n    width: 100%;\n    background-color: #000000af;\n    -webkit-backdrop-filter: blur(5px);\n            backdrop-filter: blur(5px);\n    left: 0;\n    top: 0;\n  }\n  .only-mobile-info[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    text-align: center;\n    width: 80%;\n    font-size: 3rem;\n    color: white;\n    font-family: m-bold;\n  }\n\n  .gray-background-box[_ngcontent-%COMP%] {\n    width: calc(100% - 25rem);\n    height: 40%;\n    position: absolute;\n    background-color: #edf2f4;\n    bottom: 0;\n    right: 0;\n  }\n\n  .container[_ngcontent-%COMP%] {\n    order: 2;\n    padding-left: 2rem;\n    padding-right: 2rem;\n    width: calc(100% - 25rem);\n    margin: auto;\n    max-width: 720px;\n    position: relative;\n    right: 0;\n  }\n\n  .slider[_ngcontent-%COMP%] {\n    flex: none;\n    width: 40%;\n    max-width: 25rem;\n    order: 1;\n  }\n\n  .square-ratio[_ngcontent-%COMP%] {\n    border-radius: 5px;\n  }\n\n  img[_ngcontent-%COMP%] {\n    border-radius: 5px;\n    box-shadow: 0px 3px 6px #00000029;\n  }\n\n  button.finished-btn[_ngcontent-%COMP%] {\n    display: block;\n    margin-top: 2rem;\n    outline: none;\n    background-color: #ef233c;\n    border: none;\n    font-family: m-bold;\n    border-radius: 3px;\n    font-size: 1.2rem;\n    color: aliceblue;\n    padding: 0.8rem;\n    cursor: pointer;\n    transition: 200ms;\n    height: unset;\n    width: 100%;\n  }\n  button.finished-btn.low-visibility[_ngcontent-%COMP%] {\n    opacity: 0.5;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jcmVhdGUvQzpcXFVzZXJzXFxqb25hc1xcRG9jdW1lbnRzXFxnaXQtcHJvamVjdHNcXHN0eWxlLXRyYW5zZmVyLXZhbGlkYXRpb24tcHJvdG90eXBlL3NyY1xcYXBwXFxjb21wb25lbnRzXFxjcmVhdGVcXGNyZWF0ZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9jcmVhdGUvY3JlYXRlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnRzL2NyZWF0ZS9DOlxcVXNlcnNcXGpvbmFzXFxEb2N1bWVudHNcXGdpdC1wcm9qZWN0c1xcc3R5bGUtdHJhbnNmZXItdmFsaWRhdGlvbi1wcm90b3R5cGUvc3JjXFxjb2xvcnMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLFlBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtBQ0RGOztBRElBO0VBQ0UsY0FBQTtFQUNBLE9BQUE7RUFDQSw0QkFBQTtBQ0RGOztBRElBO0VBQ0UsVUFBQTtFQUNBLHVCQUFBO0FDREY7O0FESUE7RUFDRSxhQUFBO0FDREY7O0FESUE7RUFDRSxpQkFBQTtFQUNBLHVCQUFBO0FDREY7O0FERUU7RUFDRSxZQUFBO0FDQUo7O0FESUE7RUFDRSxhQUFBO0FDREY7O0FESUE7RUFDRTtJQUNFLGlCQUFBO0lBQ0Esa0JBQUE7RUNERjtBQUNGOztBRElBO0VBQ0U7SUFDRSxtQkFBQTtFQ0ZGOztFREtBO0lBQ0UsYUFBQTtJQUNBLHVCQUFBO0lBQ0EsbUJBQUE7SUFDQSxlQUFBO0lBQ0EsWUFBQTtJQUNBLFdBQUE7SUFDQSwyQkFBQTtJQUNBLGtDQUFBO1lBQUEsMEJBQUE7SUFDQSxPQUFBO0lBQ0EsTUFBQTtFQ0ZGO0VER0U7SUFDRSxrQkFBQTtJQUNBLFVBQUE7SUFDQSxlQUFBO0lBQ0EsWUFBQTtJQUNBLG1CQUFBO0VDREo7O0VES0E7SUFDRSx5QkFBQTtJQUNBLFdBQUE7SUFDQSxrQkFBQTtJQUNBLHlCRTFFUztJRjJFVCxTQUFBO0lBQ0EsUUFBQTtFQ0ZGOztFREtBO0lBQ0UsUUFBQTtJQUNBLGtCQUFBO0lBQ0EsbUJBQUE7SUFDQSx5QkFBQTtJQUNBLFlBQUE7SUFDQSxnQkFBQTtJQUNBLGtCQUFBO0lBQ0EsUUFBQTtFQ0ZGOztFREtBO0lBQ0UsVUFBQTtJQUNBLFVBQUE7SUFDQSxnQkFBQTtJQUNBLFFBQUE7RUNGRjs7RURLQTtJQUNFLGtCQUFBO0VDRkY7O0VES0E7SUFDRSxrQkFBQTtJQUNBLGlDQUFBO0VDRkY7O0VES0E7SUFDRSxjQUFBO0lBQ0EsZ0JBQUE7SUFDQSxhQUFBO0lBQ0EseUJFN0dZO0lGOEdaLFlBQUE7SUFDQSxtQkFBQTtJQUNBLGtCQUFBO0lBQ0EsaUJBQUE7SUFDQSxnQkFBQTtJQUNBLGVBQUE7SUFDQSxlQUFBO0lBQ0EsaUJBQUE7SUFDQSxhQUFBO0lBQ0EsV0FBQTtFQ0ZGO0VER0U7SUFDRSxZQUFBO0VDREo7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY3JlYXRlL2NyZWF0ZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgXCIuLi8uLi8uLi9jb2xvcnMuc2Nzc1wiO1xyXG5cclxuOmhvc3Qge1xyXG4gIGhlaWdodDogMTAwJTtcclxuICB3aWR0aDogMTAwJTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICRkYXJrZXN0LWZvbnQtY29sb3I7XHJcbn1cclxuXHJcbi5zbGlkZXIge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIGZsZXg6IDE7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0xNXB4KTtcclxufVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgcGFkZGluZzogMDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxufVxyXG5cclxuYnV0dG9uLmZpbmlzaGVkLWJ0biB7XHJcbiAgZGlzcGxheTogbm9uZTtcclxufVxyXG5cclxuLmFwcGx5aW5nLXN0eWxlIHtcclxuICB0cmFuc2l0aW9uOiA1MDBtcztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxuICAuc2VsZWN0ZWQtaW1hZ2Uge1xyXG4gICAgb3BhY2l0eTogMC41O1xyXG4gIH1cclxufVxyXG5cclxuLm9ubHktbW9iaWxlLWluZm8ge1xyXG4gIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuXHJcbkBtZWRpYSAobWluLXdpZHRoOiA3MjBweCkge1xyXG4gIC5jb250YWluZXIge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxMCU7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMCU7XHJcbiAgfVxyXG59XHJcblxyXG5AbWVkaWEgKG1pbi13aWR0aDogMTAwMHB4KSB7XHJcbiAgOmhvc3Qge1xyXG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcclxuICB9XHJcblxyXG4gIC5vbmx5LW1vYmlsZS1pbmZvIHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDBhZjtcclxuICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cig1cHgpO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHRvcDogMDtcclxuICAgIHAge1xyXG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgIHdpZHRoOiA4MCU7XHJcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICAgICAgY29sb3I6IHdoaXRlO1xyXG4gICAgICBmb250LWZhbWlseTogbS1ib2xkO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgLmdyYXktYmFja2dyb3VuZC1ib3gge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDI1cmVtKTtcclxuICAgIGhlaWdodDogNDAlO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogJGFsaWNlLWJsdWU7XHJcbiAgICBib3R0b206IDA7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5jb250YWluZXIge1xyXG4gICAgb3JkZXI6IDI7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDJyZW07XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAycmVtO1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAtIDI1cmVtKTtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIG1heC13aWR0aDogNzIwcHg7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICByaWdodDogMDtcclxuICB9XHJcblxyXG4gIC5zbGlkZXIge1xyXG4gICAgZmxleDogbm9uZTtcclxuICAgIHdpZHRoOiA0MCU7XHJcbiAgICBtYXgtd2lkdGg6IDI1cmVtO1xyXG4gICAgb3JkZXI6IDE7XHJcbiAgfVxyXG5cclxuICAuc3F1YXJlLXJhdGlvIHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICB9XHJcblxyXG4gIGltZyB7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgICBib3gtc2hhZG93OiAwcHggM3B4IDZweCAjMDAwMDAwMjk7XHJcbiAgfVxyXG5cclxuICBidXR0b24uZmluaXNoZWQtYnRuIHtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgbWFyZ2luLXRvcDogMnJlbTtcclxuICAgIG91dGxpbmU6IG5vbmU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkcHJpbWFyeS1jb2xvcjtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGZvbnQtZmFtaWx5OiBtLWJvbGQ7XHJcbiAgICBib3JkZXItcmFkaXVzOiAzcHg7XHJcbiAgICBmb250LXNpemU6IDEuMnJlbTtcclxuICAgIGNvbG9yOiBhbGljZWJsdWU7XHJcbiAgICBwYWRkaW5nOiAwLjhyZW07XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB0cmFuc2l0aW9uOiAyMDBtcztcclxuICAgIGhlaWdodDogdW5zZXQ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgICYubG93LXZpc2liaWxpdHkge1xyXG4gICAgICBvcGFjaXR5OiAwLjU7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4vLyBMYXJnZSBkZXZpY2VzIChkZXNrdG9wcywgOTkycHggYW5kIHVwKVxyXG5AbWVkaWEgKG1pbi13aWR0aDogOTkycHgpIHtcclxufVxyXG4iLCI6aG9zdCB7XG4gIGhlaWdodDogMTAwJTtcbiAgd2lkdGg6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzFmMjUzMDtcbn1cblxuLnNsaWRlciB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmbGV4OiAxO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoLTE1cHgpO1xufVxuXG4uY29udGFpbmVyIHtcbiAgcGFkZGluZzogMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbmJ1dHRvbi5maW5pc2hlZC1idG4ge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4uYXBwbHlpbmctc3R5bGUge1xuICB0cmFuc2l0aW9uOiA1MDBtcztcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG59XG4uYXBwbHlpbmctc3R5bGUgLnNlbGVjdGVkLWltYWdlIHtcbiAgb3BhY2l0eTogMC41O1xufVxuXG4ub25seS1tb2JpbGUtaW5mbyB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbkBtZWRpYSAobWluLXdpZHRoOiA3MjBweCkge1xuICAuY29udGFpbmVyIHtcbiAgICBwYWRkaW5nLWxlZnQ6IDEwJTtcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMCU7XG4gIH1cbn1cbkBtZWRpYSAobWluLXdpZHRoOiAxMDAwcHgpIHtcbiAgOmhvc3Qge1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIH1cblxuICAub25seS1tb2JpbGUtaW5mbyB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMGFmO1xuICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cig1cHgpO1xuICAgIGxlZnQ6IDA7XG4gICAgdG9wOiAwO1xuICB9XG4gIC5vbmx5LW1vYmlsZS1pbmZvIHAge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB3aWR0aDogODAlO1xuICAgIGZvbnQtc2l6ZTogM3JlbTtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgZm9udC1mYW1pbHk6IG0tYm9sZDtcbiAgfVxuXG4gIC5ncmF5LWJhY2tncm91bmQtYm94IHtcbiAgICB3aWR0aDogY2FsYygxMDAlIC0gMjVyZW0pO1xuICAgIGhlaWdodDogNDAlO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWRmMmY0O1xuICAgIGJvdHRvbTogMDtcbiAgICByaWdodDogMDtcbiAgfVxuXG4gIC5jb250YWluZXIge1xuICAgIG9yZGVyOiAyO1xuICAgIHBhZGRpbmctbGVmdDogMnJlbTtcbiAgICBwYWRkaW5nLXJpZ2h0OiAycmVtO1xuICAgIHdpZHRoOiBjYWxjKDEwMCUgLSAyNXJlbSk7XG4gICAgbWFyZ2luOiBhdXRvO1xuICAgIG1heC13aWR0aDogNzIwcHg7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHJpZ2h0OiAwO1xuICB9XG5cbiAgLnNsaWRlciB7XG4gICAgZmxleDogbm9uZTtcbiAgICB3aWR0aDogNDAlO1xuICAgIG1heC13aWR0aDogMjVyZW07XG4gICAgb3JkZXI6IDE7XG4gIH1cblxuICAuc3F1YXJlLXJhdGlvIHtcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIH1cblxuICBpbWcge1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBib3gtc2hhZG93OiAwcHggM3B4IDZweCAjMDAwMDAwMjk7XG4gIH1cblxuICBidXR0b24uZmluaXNoZWQtYnRuIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgICBtYXJnaW4tdG9wOiAycmVtO1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2VmMjMzYztcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgZm9udC1mYW1pbHk6IG0tYm9sZDtcbiAgICBib3JkZXItcmFkaXVzOiAzcHg7XG4gICAgZm9udC1zaXplOiAxLjJyZW07XG4gICAgY29sb3I6IGFsaWNlYmx1ZTtcbiAgICBwYWRkaW5nOiAwLjhyZW07XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICAgIHRyYW5zaXRpb246IDIwMG1zO1xuICAgIGhlaWdodDogdW5zZXQ7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgYnV0dG9uLmZpbmlzaGVkLWJ0bi5sb3ctdmlzaWJpbGl0eSB7XG4gICAgb3BhY2l0eTogMC41O1xuICB9XG59IiwiJGFsaWNlLWJsdWU6ICNlZGYyZjQ7XHJcbiRwcmltYXJ5LWNvbG9yOiAjZWYyMzNjO1xyXG4kc2Vjb25kYXJ5LWNvbG9yOiAjMmIyZDQyO1xyXG4kbWFuYXRlZS1ncmV5OiAjOGQ5OWFlO1xyXG5cclxuJGxpZ2h0LWRhcmstZm9udC1jb2xvcjogI2NiY2JjYjtcclxuXHJcbiRkYXJrLWZvbnQtY29sb3I6ICMyOTMyNDE7XHJcbiRkYXJrZXN0LWZvbnQtY29sb3I6ICMxZjI1MzA7XHJcbiJdfQ== */"],
       data: {
         animation: [src_app_components_shared_animations__WEBPACK_IMPORTED_MODULE_2__["slideInOutBottom"]]
@@ -1962,6 +2003,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]
         }, {
           type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"]
+        }, {
+          type: _angular_fire_analytics__WEBPACK_IMPORTED_MODULE_7__["AngularFireAnalytics"]
         }];
       }, null);
     })();
@@ -2963,7 +3006,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         projectId: 'petai-validation',
         storageBucket: 'petai-validation.appspot.com',
         messagingSenderId: '557454141908',
-        appId: '1:557454141908:web:334fa81265bf7f62ba0e41'
+        appId: '1:557454141908:web:334fa81265bf7f62ba0e41',
+        measurementId: 'G-4YT6SZ8HP9'
       }
     };
     /*

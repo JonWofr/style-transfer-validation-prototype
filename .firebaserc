@@ -5,8 +5,8 @@
   "targets": {
     "petai-validation": {
       "hosting": {
-        "style-transfer-validation-prototype": [
-          "petai-validation"
+        "default": [
+          "pet-ai"
         ]
       }
     }

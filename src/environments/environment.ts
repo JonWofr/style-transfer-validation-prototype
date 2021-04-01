@@ -11,6 +11,7 @@ export const environment = {
     storageBucket: 'petai-validation.appspot.com',
     messagingSenderId: '557454141908',
     appId: '1:557454141908:web:334fa81265bf7f62ba0e41',
+    measurementId: 'G-4YT6SZ8HP9',
   },
 };
 
