@@ -1,7 +1,7 @@
 <div class="slider-wrapper">
   <button
     class="add-btn"
-    [class.add-btn-hide]="fitStyleView"
+    [class.add-btn-hide]="shouldShowFitStyleView"
     [ngClass]="{
       'animate__animated animate__pulse animate__infinite': showAttentionSeekerUpload
     }"
@@ -11,21 +11,25 @@
   </button>
   <button
     [class.btn-hide]="selectedStyleIndex === undefined"
-    [class.btn-back]="fitStyleView"
+    [class.btn-back]="shouldShowFitStyleView"
     class="apply-style-btn"
-    (click)="fitStyleBtnClicked($event)"
+    (click)="changeShouldShowFitStyleView.emit(!shouldShowFitStyleView)"
   >
-    Apply {{ styleImages[selectedStyleIndex]?.artist }} Style
+    {{
+      shouldShowFitStyleView
+        ? "Back"
+        : styleImages[selectedStyleIndex]?.artist + "Style"
+    }}
   </button>
 
   <create-submit
     [styleImageName]="styleImages[selectedStyleIndex]?.artist"
     [styleImageUrl]="styleImages[selectedStyleIndex]?.image.publicUrl"
-    *ngIf="fitStyleView"
+    *ngIf="shouldShowFitStyleView"
     (submitForm)="submitForm.emit($event)"
   ></create-submit>
 
-  <div class="overflow-hide" *ngIf="!fitStyleView">
+  <div class="overflow-hide" *ngIf="!shouldShowFitStyleView">
     <h2 *ngIf="uploadedImage">Choose Style</h2>
     <div
       [class.animate__fadeInUpBig]="!isHorizontalMode"

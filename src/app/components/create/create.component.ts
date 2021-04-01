@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { StylizationJob } from 'src/app/models/stylization-job.model';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { v4 as uuidv4 } from 'uuid';
+import { AngularFireAnalytics } from '@angular/fire/analytics';
 
 @Component({
   selector: 'page-create',
@@ -17,13 +18,15 @@ export class CreateComponent implements OnInit {
   constructor(
     private auth: AngularFireAuth,
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private analytics: AngularFireAnalytics
   ) {}
 
   imageSrc = '/assets/images/upload-picture.svg';
   selectedFile?: File;
   shouldShowUploadModal = false;
   shouldShowResponseModal = false;
+  shouldShowFitStyleView = false;
 
   contentImages = [];
   selectedContentImageIndex = 0;
@@ -147,17 +150,24 @@ export class CreateComponent implements OnInit {
       const querySize = query.size;
 
       if (querySize < 3) {
+        this.isApplyingStyle = true;
         const contentImagePublicUrl = await this.uploadFile(this.selectedFile);
+        const selectedStyleImage = this.styleImages[
+          this.selectedStyleImageIndex
+        ];
         const stylizationJob: StylizationJob = {
           userId,
           email,
           contentImagePublicUrl,
-          styleImagePublicUrl: this.styleImages[this.selectedStyleImageIndex]
-            .image.publicUrl,
+          styleImagePublicUrl: selectedStyleImage.image.publicUrl,
         };
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;
         this.submittedImagesCount = querySize + 1;
+        this.isApplyingStyle = false;
+        this.analytics.logEvent('purchase', {
+          value: selectedStyleImage.artist,
+        });
       } else {
         this.hasCreatedNewDocument = false;
         this.submittedImagesCount = querySize;
@@ -191,5 +201,10 @@ export class CreateComponent implements OnInit {
 
   onClickSendAnotherButton() {
     this.toggleResponseModal(false);
+    this.toggleFitStyleView(false);
+  }
+
+  toggleFitStyleView(shouldShow: boolean) {
+    this.shouldShowFitStyleView = shouldShow;
   }
 }

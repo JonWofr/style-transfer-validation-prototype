@@ -16,9 +16,11 @@
   [styleImages]="styleImages"
   [isUploadingImage]="isUploadingImage"
   [uploadedImage]="'/assets/images/upload-picture.svg' != imageSrc"
+  [shouldShowFitStyleView]="shouldShowFitStyleView"
   (changeSelectedStyleIndex)="onChangeSelectedStyleIndex($event)"
   (clickAddImageButton)="toggleUploadModal(true)"
   (submitForm)="onSubmitForm($event)"
+  (changeShouldShowFitStyleView)="toggleFitStyleView($event)"
   class="slider"
 ></create-image-style-slider>
 

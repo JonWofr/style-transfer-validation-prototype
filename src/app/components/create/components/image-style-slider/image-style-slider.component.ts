@@ -51,11 +51,14 @@ export class ImageStyleSliderComponent implements OnInit {
   @Input() contentImages: ContentImage[] = [];
   @Input() styleImages: StyleImage[] = [];
 
-  _isUploadingImage: boolean;
   @Input() uploadedImage = false;
 
   showAttentionSeekerUpload = true;
 
+  @Input() shouldShowFitStyleView = false;
+  @Output() changeShouldShowFitStyleView = new EventEmitter<boolean>();
+
+  _isUploadingImage: boolean;
   @Input() set isUploadingImage(uploading: boolean) {
     if (this.imgSwiper) {
       this.imgSwiper.slideTo(0);
@@ -66,43 +69,11 @@ export class ImageStyleSliderComponent implements OnInit {
     }
     this._isUploadingImage = uploading;
   }
-
   get isUploadingImage() {
     return this._isUploadingImage;
   }
 
   @Output() submitForm = new EventEmitter<string>();
-
-  updateSelectedStyleIndex(index: number) {
-    if (index !== undefined) {
-      this.selectedStyleIndex = index;
-      this.changeSelectedStyleIndex.emit(index);
-      setTimeout(() => {
-        this.imgSwiper.update();
-        this.imgSwiper.slideTo(0);
-      }, 200);
-    }
-  }
-
-  updateSelectedImageIndex(index: number) {
-    if (index !== undefined) {
-      this.selectedImageIndex = index;
-      this.selectedImageIndexChange.emit(index);
-    }
-  }
-
-  openUploadModal() {
-    this.clickAddImageButton.emit();
-    this.showAttentionSeekerUpload = false;
-  }
-
-  fitStyleView = false;
-  fitStyleBtnClicked(event) {
-    this.fitStyleView = !this.fitStyleView;
-    event.target.innerHTML = this.fitStyleView
-      ? 'Back'
-      : 'Apply ' + this.styleImages[this.selectedStyleIndex]?.artist + ' Style';
-  }
 
   isHorizontalMode = true;
 
@@ -181,5 +152,28 @@ export class ImageStyleSliderComponent implements OnInit {
     } else {
       alert('please select a style first');
     }
+  }
+
+  updateSelectedStyleIndex(index: number) {
+    if (index !== undefined) {
+      this.selectedStyleIndex = index;
+      this.changeSelectedStyleIndex.emit(index);
+      setTimeout(() => {
+        this.imgSwiper.update();
+        this.imgSwiper.slideTo(0);
+      }, 200);
+    }
+  }
+
+  updateSelectedImageIndex(index: number) {
+    if (index !== undefined) {
+      this.selectedImageIndex = index;
+      this.selectedImageIndexChange.emit(index);
+    }
+  }
+
+  openUploadModal() {
+    this.clickAddImageButton.emit();
+    this.showAttentionSeekerUpload = false;
   }
 }
