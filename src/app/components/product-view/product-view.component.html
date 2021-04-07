@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="square-ratio">
+    <img [src]="imageSrc" alt="" class="background-image" />
+    <img class="selected-image" [src]="imageSrc" alt="" />
+  </div>
+</div>
+
+<div class="info">
+  <div class="styles">
+    <shared-style-circle
+      verticalLayout="true"
+      [styleImage]="styles[0]"
+    ></shared-style-circle>
+    <shared-style-circle
+      verticalLayout="true"
+      [styleImage]="styles[1]"
+    ></shared-style-circle>
+  </div>
+
+  <div class="offers">
+    <h2>Do you like the results?</h2>
+    <div class="offer-section">
+      <h3 class="offer-text">
+        Use a <span>high quality version</span> of it as your desktop or phone
+        background!
+      </h3>
+      <div class="resolution-demo">
+        <div class="product-demo-box">
+          <img id="lq-res-demo" src="./assets/images/lq-demo.jpg" alt="" />
+          <div class="product-specs">
+            <p class="title">Free Basic</p>
+            <p class="dimensions">512px</p>
+          </div>
+        </div>
+        <div class="product-demo-box">
+          <img id="hq-res-demo" src="./assets/images/hq-demo.jpg" alt="" />
+          <div class="product-specs">
+            <p class="title">Premium<span>9.99 €</span></p>
+            <p class="dimensions">2160px</p>
+          </div>
+        </div>
+      </div>
+      <button>More Information</button>
+    </div>
+    <div class="offer-section">
+      <h3 class="offer-text">
+        Or get a <span>high quality print</span> for your livingroom! <br />
+        (digital premium file inclusive)
+      </h3>
+      <div class="product-demo-box">
+        <div class="swiper-container product-demo-swiper">
+          <div class="swiper-wrapper">
+            <img
+              class="swiper-slide"
+              src="./assets/images/product-preview.png"
+              alt=""
+            />
+            <img
+              class="swiper-slide"
+              src="./assets/images/husky-styled.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="product-specs">
+          <p class="title">High Quality Print<span>14.99 €</span></p>
+          <p class="dimensions">30x45cm</p>
+        </div>
+      </div>
+      <button>More Information</button>
+    </div>
+
+    <div id="basic" class="offer-section">
+      <h3 class="offer-text">
+        Or download the low resolution version with a watermark for free!
+      </h3>
+      <button>Download Basic Artworks</button>
+    </div>
+  </div>
+</div>

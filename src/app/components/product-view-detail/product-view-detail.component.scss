@@ -1,0 +1,124 @@
+@import "../../../colors.scss";
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: $secondary-color;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  color: white;
+  font-family: m-reg;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.product-demo-swiper {
+  height: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+  img.swiper-slide {
+    height: 100% !important;
+    object-fit: cover;
+  }
+}
+
+.styles {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  .style {
+    width: 30%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    position: relative;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+
+    div.stepper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      background-color: rgba(20, 15, 53, 0.452);
+      width: 100%;
+      height: calc(100% - 1.5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      img {
+        padding: 1rem;
+        height: 1.8rem;
+        cursor: pointer;
+      }
+      p {
+        font-family: m-bold;
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.order-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: $secondary-color;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  .price {
+    display: flex;
+    flex-direction: column;
+    font-family: m-reg;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+    span {
+      font-size: 1rem;
+    }
+  }
+  button {
+    width: 50%;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: $primary-color;
+    font-family: m-semi-bold;
+    font-size: 1.4rem;
+    height: 3.8rem;
+  }
+}
+
+.info-toggle {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  font-family: m-bold;
+  margin-bottom: 2rem;
+  p {
+    padding-bottom: 0.5rem;
+    &.selected {
+      border-bottom: solid $primary-color 2px;
+    }
+  }
+}
+
+.info-section {
+  .swiper-slide {
+    font-size: 1.4rem;
+  }
+}

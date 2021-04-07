@@ -1,0 +1,93 @@
+<h1>Get a high quality print for your living room</h1>
+
+<div class="wrapper">
+  <div class="swiper-container product-demo-swiper">
+    <div class="swiper-wrapper">
+      <img
+        class="swiper-slide"
+        src="./assets/images/product-preview.png"
+        alt=""
+      />
+      <img class="swiper-slide" src="./assets/images/husky-styled.jpg" alt="" />
+    </div>
+  </div>
+  <div class="styles">
+    <div class="style">
+      <shared-style-circle
+        verticalLayout="true"
+        [styleImage]="styles[0]"
+      ></shared-style-circle>
+      <div class="stepper">
+        <img src="/assets/icons/minus-icon.svg" alt="" />
+        <p>1</p>
+        <img src="/assets/icons/plus-icon.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="style">
+      <shared-style-circle
+        verticalLayout="true"
+        [styleImage]="styles[1]"
+      ></shared-style-circle>
+      <div class="stepper">
+        <img src="/assets/icons/minus-icon.svg" alt="" />
+        <p>0</p>
+        <img src="/assets/icons/plus-icon.svg" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="order-section">
+    <p class="price">Total: 14.99 € <span>VAT inclusive</span></p>
+    <button type="submit">Check-Out</button>
+  </div>
+
+  <div class="info-section">
+    <div class="info-toggle">
+      <p
+        [class.selected]="isDesriptionSlideActive"
+        (click)="toggleProductInfo(0)"
+      >
+        Description
+      </p>
+      <p
+        [class.selected]="!isDesriptionSlideActive"
+        (click)="toggleProductInfo(1)"
+      >
+        Shipping
+      </p>
+    </div>
+    <div class="swiper-container product-info-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide description">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet. sed diam nonumy
+          eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+          diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet. sed diam nonumy eirmod tempor invidunt ut labore
+          et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+          accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+          no sea takimata sanctus est Lorem ipsum dolor sit amet. sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+          rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+          ipsum dolor sit amet.
+        </div>
+        <div class="swiper-slide shipping">
+          sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam
+          et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+          takimata sanctus est Lorem ipsum dolor sit amet.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

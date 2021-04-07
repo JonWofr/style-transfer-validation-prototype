@@ -15,9 +15,12 @@ import {
   UserTrackingService,
 } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { SharedModule } from './components/shared/shared.module';
+import { ProductViewDetailComponent } from './components/product-view-detail/product-view-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateComponent],
+  declarations: [AppComponent, CreateComponent, ProductViewComponent, ProductViewDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +31,7 @@ import { environment } from '../environments/environment';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
+    SharedModule,
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
