@@ -15,11 +15,7 @@
     class="apply-style-btn"
     (click)="changeShouldShowFitStyleView.emit(!shouldShowFitStyleView)"
   >
-    {{
-      shouldShowFitStyleView
-        ? "Back"
-        : styleImages[selectedStyleIndex]?.artist + "Style"
-    }}
+    {{ shouldShowFitStyleView ? "Back" : "Apply This Style" }}
   </button>
 
   <create-submit
