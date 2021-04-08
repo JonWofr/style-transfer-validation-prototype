@@ -1,20 +1,33 @@
 <div class="container">
   <div class="square-ratio">
-    <img [src]="imageSrc" alt="" class="background-image" />
-    <img class="selected-image" [src]="imageSrc" alt="" />
+    <img
+      [src]="stylizedImages[selectedStyleIndex]?.publicUrl"
+      alt=""
+      class="background-image"
+    />
+    <img
+      class="selected-image"
+      [src]="stylizedImages[selectedStyleIndex]?.publicUrl"
+      alt=""
+    />
   </div>
 </div>
 
 <div class="info">
-  <div class="styles">
-    <shared-style-circle
-      verticalLayout="true"
-      [styleImage]="styles[0]"
-    ></shared-style-circle>
-    <shared-style-circle
-      verticalLayout="true"
-      [styleImage]="styles[1]"
-    ></shared-style-circle>
+  <div class="stylized-images">
+    <div
+      *ngFor="let stylizedImage of stylizedImages; let i = index"
+      (click)="onClickStylizedImage(i)"
+    >
+      <div>
+        <div class="image-wrapper">
+          <img [src]="stylizedImage.publicUrl" alt="" />
+        </div>
+        <div class="overlay" [class.selected]="i === selectedStyleIndex">
+          <img  *ngIf="i === selectedStyleIndex" src="/assets/icons/hook.svg" />
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="offers">

@@ -26,48 +26,82 @@ h1 {
   }
 }
 
-.styles {
-  width: 100%;
+.stylized-images {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3rem;
-  .style {
-    width: 30%;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    position: relative;
-    &:first-child {
-      margin-left: 0;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
+  margin: 0 -10px 2rem -10px;
 
-    div.stepper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 50%;
-      background-color: rgba(20, 15, 53, 0.452);
+  & > * {
+    margin: 0 10px;
+  }
+
+  & > div {
+    flex-basis: calc(33.33% - 2 * 10px);
+    cursor: pointer;
+
+    & > div {
       width: 100%;
-      height: calc(100% - 1.5rem);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      img {
-        padding: 1rem;
-        height: 1.8rem;
-        cursor: pointer;
+      padding-bottom: 100%;
+      position: relative;
+
+      & > div.image-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
       }
-      p {
-        font-family: m-bold;
-        font-size: 2rem;
-        text-align: center;
+      & > div.overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: background-color .25s ease-in-out;
+        background-color: rgba(30, 30, 30, 0.4);
+
+      }
+      & > div.stepper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 -.25rem;
+
+        & > * {
+          margin: 0 .25rem;
+        } 
+
+        & > button {
+          background-color: transparent;
+          border: none;
+
+          & > img {
+            display: block;
+            width: 1.75rem;
+            height: 1.75rem;
+          }
+        }
+
+        & > p {
+          font-size: 1.5rem;
+        }
       }
     }
   }
 }
+
+
 
 .order-section {
   display: flex;

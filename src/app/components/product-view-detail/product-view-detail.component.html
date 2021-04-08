@@ -11,28 +11,23 @@
       <img class="swiper-slide" src="./assets/images/husky-styled.jpg" alt="" />
     </div>
   </div>
-  <div class="styles">
-    <div class="style">
-      <shared-style-circle
-        verticalLayout="true"
-        [styleImage]="styles[0]"
-      ></shared-style-circle>
-      <div class="stepper">
-        <img src="/assets/icons/minus-icon.svg" alt="" />
-        <p>1</p>
-        <img src="/assets/icons/plus-icon.svg" alt="" />
-      </div>
-    </div>
-
-    <div class="style">
-      <shared-style-circle
-        verticalLayout="true"
-        [styleImage]="styles[1]"
-      ></shared-style-circle>
-      <div class="stepper">
-        <img src="/assets/icons/minus-icon.svg" alt="" />
-        <p>0</p>
-        <img src="/assets/icons/plus-icon.svg" alt="" />
+  <div class="stylized-images">
+    <div *ngFor="let stylizedImage of stylizedImages; let i = index">
+      <div>
+        <div class="image-wrapper">
+          <img [src]="stylizedImage.publicUrl" alt="" />
+        </div>
+        <div class="overlay">
+        </div>
+        <div class="stepper">
+          <button>
+            <img src="/assets/icons/minus-icon.svg" alt="" />
+          </button>
+          <p>0</p>
+          <button>
+            <img src="/assets/icons/plus-icon.svg" alt="" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
