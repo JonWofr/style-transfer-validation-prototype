@@ -18,9 +18,11 @@ import { environment } from '../environments/environment';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { SharedModule } from './components/shared/shared.module';
 import { ProductViewDetailComponent } from './components/product-view-detail/product-view-detail.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, CreateComponent, ProductViewComponent, ProductViewDetailComponent],
+  declarations: [AppComponent, CreateComponent, ProductViewComponent, ProductViewDetailComponent, CheckoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +34,7 @@ import { ProductViewDetailComponent } from './components/product-view-detail/pro
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
     SharedModule,
+    HttpClientModule
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
