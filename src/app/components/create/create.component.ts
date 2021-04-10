@@ -28,70 +28,34 @@ export class CreateComponent implements OnInit {
   shouldShowResponseModal = false;
   shouldShowFitStyleView = false;
 
-  contentImages = [];
-  selectedContentImageIndex = 0;
-
-  stylizedImages = [
+  matchingStylizedImagePreviews: {
+    publicUrl: string;
+    appliedStyleImageName: string;
+  }[] = [];
+  stylizedImagePreviews: {
+    publicUrl: string;
+    appliedStyleImageName: string;
+  }[] = [
     {
-      image: {
-        publicUrl: '/assets/images/husky-styled.jpg',
-        appliedStyle: 'Abstract',
-      },
+      publicUrl: '/assets/images/stylized-image-1.jpg',
+      appliedStyleImageName: 'Composition VII',
     },
     {
-      image: {
-        publicUrl: '/assets/images/husky-unstyled.jpg',
-        appliedStyle: 'Abstract',
-      },
-    },
-    {
-      image: {
-        publicUrl: '/assets/images/canvas-demo.png',
-        appliedStyle: 'Abstract2',
-      },
-    },
-    {
-      image: {
-        publicUrl: '/assets/images/alu-demo.png',
-        appliedStyle: 'Abstract2',
-      },
+      publicUrl: '/assets/images/stylized-image-2.jpg',
+      appliedStyleImageName: 'The Lion',
     },
   ];
 
   styleImages: StyleImage[] = [
     {
-      image: {
-        filename: 'abstract.jpg',
-        size: 703080,
-        publicUrl:
-          'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg',
-        width: 1000,
-        height: 1000,
-        timestamp: {
-          _seconds: 1617092862,
-          _nanoseconds: 547000000,
-        },
-      },
-      artist: 'Abstract',
-      name: 'Abstract',
-      id: 'yG571A7o01wabNulmA3K',
+      publicUrl:
+        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/style-image-1.jpg',
+      name: 'Composition VII',
     },
     {
-      image: {
-        filename: 'abstract.jpg',
-        size: 703080,
-        publicUrl:
-          'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg',
-        width: 1000,
-        height: 1000,
-        timestamp: {
-          _seconds: 1617092862,
-          _nanoseconds: 547000000,
-        },
-      },
-      artist: 'Abstract2',
-      name: 'Abstract',
-      id: 'yG571A7o01wabNulmA3K',
+      publicUrl:
+        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/style-image-2.jpg',
+      name: 'The Lion',
     },
   ];
   selectedStyleImageIndex = 0;
@@ -104,7 +68,7 @@ export class CreateComponent implements OnInit {
   hasCreatedNewDocument = false;
 
   ngOnInit(): void {
-    this.contentImages = this.stylizedImages;
+    this.matchingStylizedImagePreviews = this.stylizedImagePreviews;
   }
 
   toggleUploadModal(shouldShow: boolean) {
@@ -134,12 +98,11 @@ export class CreateComponent implements OnInit {
 
   onChangeSelectedStyleIndex(index: number) {
     this.selectedStyleImageIndex = index;
-    this.contentImages = this.stylizedImages.filter((image) => {
-      return (
-        image.image.appliedStyle ===
-        this.styleImages[this.selectedStyleImageIndex].artist
-      );
-    });
+    this.matchingStylizedImagePreviews = this.stylizedImagePreviews.filter(
+      (stylizedImagePreview) =>
+        stylizedImagePreview.appliedStyleImageName ===
+        this.styleImages[this.selectedStyleImageIndex].name
+    );
   }
 
   async onSubmitForm(email: string) {
@@ -159,14 +122,14 @@ export class CreateComponent implements OnInit {
           userId,
           email,
           contentImagePublicUrl,
-          styleImagePublicUrl: selectedStyleImage.image.publicUrl,
+          styleImagePublicUrl: selectedStyleImage.publicUrl,
         };
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;
         this.submittedImagesCount = querySize + 1;
         this.isApplyingStyle = false;
         this.analytics.logEvent('purchase', {
-          value: selectedStyleImage.artist,
+          value: selectedStyleImage.name,
         });
       } else {
         this.hasCreatedNewDocument = false;

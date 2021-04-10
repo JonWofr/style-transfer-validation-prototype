@@ -8,7 +8,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContentImage } from 'src/app/models/content-image.model';
 import { StyleImage } from 'src/app/models/style-image.model';
 
 import SwiperCore, {
@@ -48,7 +47,10 @@ export class ImageStyleSliderComponent implements OnInit {
   @Input() selectedStyleIndex: number;
   @Output() changeSelectedStyleIndex = new EventEmitter<number>();
 
-  @Input() contentImages: ContentImage[] = [];
+  @Input() matchingStylizedImagePreviews: {
+    publicUrl: string;
+    appliedStyleImageName: string;
+  }[] = [];
   @Input() styleImages: StyleImage[] = [];
 
   @Input() uploadedImage = false;

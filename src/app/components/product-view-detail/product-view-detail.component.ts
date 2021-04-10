@@ -30,7 +30,9 @@ SwiperCore.use([
 })
 export class ProductViewDetailComponent implements OnInit {
   stylizedImages = [];
-
+  items = [];
+  descriptionSwiper: Swiper;
+  isDesriptionSlideActive = true;
 
   constructor(
     private firestore: AngularFirestore,
@@ -44,12 +46,17 @@ export class ProductViewDetailComponent implements OnInit {
       await this.router.navigateByUrl('');
       return;
     }
-    this.stylizedImages = await this.fetchStylizedImages(userId);
-    if (this.stylizedImages.length === 0) {
+    const stylizedImageDocuments = await this.fetchStylizedImageDocuments(
+      userId
+    );
+    if (stylizedImageDocuments.length === 0) {
       await this.router.navigateByUrl('');
       return;
     }
-    const swiper1 = new Swiper('.product-demo-swiper', {
+    this.stylizedImages = stylizedImageDocuments.map((stylizedImageDocument) =>
+      stylizedImageDocument.data()
+    );
+    new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
       spaceBetween: 16,
       autoplay: {
@@ -63,29 +70,16 @@ export class ProductViewDetailComponent implements OnInit {
     });
   }
 
-  async fetchStylizedImages(userId: string) {
+  async fetchStylizedImageDocuments(userId: string) {
     const query = await this.firestore
       .collection('stylized-images')
       .ref.where('userId', '==', userId)
       .get();
-    const populatedDocuments = await Promise.all(
-      query.docs.map(async (document) => {
-        const documentData = document.data()
-        const referenceKey = 'stylizationJob'
-        const referencedDocument = await (documentData[referenceKey] as DocumentReference).get()
-        documentData[referenceKey] = referencedDocument.data()
-        return documentData
-      }));
-    return populatedDocuments as any;
+    return query.docs;
   }
 
   toggleProductInfo(slide: number) {
     this.isDesriptionSlideActive = 0 == slide;
     this.descriptionSwiper.slideTo(slide);
   }
-
-  descriptionSwiper: Swiper;
-  isDesriptionSlideActive = true;
-
-  styles = styleJSON;
 }

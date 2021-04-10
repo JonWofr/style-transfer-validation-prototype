@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as paypal from '@paypal/checkout-server-sdk';
 import * as functions from 'firebase-functions';
+import { PurchaseUnit } from '../../models/purchase-unit.model';
 
 const environment = new paypal.core.SandboxEnvironment(
   functions.config().paypal.publickey,
@@ -14,16 +15,17 @@ export const createOrder = async (
 ) => {
   try {
     const request = new paypal.orders.OrdersCreateRequest();
+    const purchaseUnits: PurchaseUnit[] = [
+      {
+        amount: {
+          currency_code: 'USD',
+          value: '220.00',
+        },
+      },
+    ];
     request.requestBody({
       intent: 'CAPTURE',
-      purchase_units: [
-        {
-          amount: {
-            currency_code: 'USD',
-            value: '220.00',
-          },
-        },
-      ],
+      purchase_units: purchaseUnits,
     });
 
     const response = await client.execute(request);

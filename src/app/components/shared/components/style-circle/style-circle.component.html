@@ -3,7 +3,7 @@
   [class.selected]="isSelected"
   [class.vertical-layout]="verticalLayout"
 >
-  <img class="style-image" [src]="styleImage?.image?.publicUrl" alt="" />
+  <img class="style-image" [src]="styleImage?.publicUrl" alt="" />
 
   <!-- <img
     *ngIf="isSelected"
@@ -12,4 +12,4 @@
     alt="selected style"
   /> -->
 </div>
-<p class="style-title">{{ styleImage?.artist }}</p>
+<p class="style-title">{{ styleImage?.name }}</p>

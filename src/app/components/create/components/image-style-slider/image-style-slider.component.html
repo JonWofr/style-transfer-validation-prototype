@@ -19,8 +19,8 @@
   </button>
 
   <create-submit
-    [styleImageName]="styleImages[selectedStyleIndex]?.artist"
-    [styleImageUrl]="styleImages[selectedStyleIndex]?.image.publicUrl"
+    [styleImageName]="styleImages[selectedStyleIndex]?.name"
+    [styleImageUrl]="styleImages[selectedStyleIndex]?.publicUrl"
     *ngIf="shouldShowFitStyleView"
     (submitForm)="submitForm.emit($event)"
   ></create-submit>
@@ -56,8 +56,11 @@
     >
       <div class="swiper-wrapper">
         <img
-          *ngFor="let contentImage of contentImages; let i = index"
-          [src]="contentImage.image.publicUrl"
+          *ngFor="
+            let matchingStylizedImagePreview of matchingStylizedImagePreviews;
+            let i = index
+          "
+          [src]="matchingStylizedImagePreview.publicUrl"
           alt=""
           class="swiper-slide selected"
         />
