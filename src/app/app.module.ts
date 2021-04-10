@@ -20,9 +20,19 @@ import { SharedModule } from './components/shared/shared.module';
 import { ProductViewDetailComponent } from './components/product-view-detail/product-view-detail.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { PaymentFailureComponent } from './components/failure/payment-failure.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateComponent, ProductViewComponent, ProductViewDetailComponent, CheckoutComponent],
+  declarations: [
+    AppComponent,
+    CreateComponent,
+    ProductViewComponent,
+    ProductViewDetailComponent,
+    CheckoutComponent,
+    PaymentSuccessComponent,
+    PaymentFailureComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     AngularFireAnalyticsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },

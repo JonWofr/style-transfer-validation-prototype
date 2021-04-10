@@ -1,1 +1,24 @@
-<div #paypalButtonsContainer></div>
+<section class="overview">
+  <h2>Übersicht</h2>
+  <ul>
+    <ng-container *ngFor="let item of items">
+      <li *ngIf="item.quantity !== 0">
+        <img [src]="item.stylizedImage.publicUrl" alt="" />
+        <div class="information">
+          <h3>
+            {{ item.product.name }}
+          </h3>
+          <p>Anzahl: {{ item.quantity }}</p>
+          <p class="price">{{ item.product.price }}€</p>
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+  <hr />
+  <p class="total-price">Total: {{ totalPrice }}€</p>
+</section>
+
+<section class="payment-methods">
+  <h2>Bezahlmethoden</h2>
+  <div #paypalButtonsContainer></div>
+</section>

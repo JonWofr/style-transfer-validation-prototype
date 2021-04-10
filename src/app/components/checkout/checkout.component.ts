@@ -1,6 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  NgZone,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Item } from 'src/app/models/item.model';
+import { OrderRequest } from 'src/app/models/order-request.model';
 
 // Necessary to access the global variable paypal which is defined by the paypal script
 declare var paypal: any;
@@ -15,10 +23,32 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('paypalButtonsContainer', { static: true })
   paypalButtonsContainer: ElementRef;
 
-  constructor(private router: Router, private httpClient: HttpClient) {}
+  items: Item[] = [];
+  totalPrice = 0;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient,
+    private ngZone: NgZone
+  ) {}
+
+  async ngOnInit(): Promise<void> {
+    const stringifiedItems = localStorage.getItem('items');
+    if (!stringifiedItems) {
+      await this.router.navigateByUrl('');
+      return;
+    }
+    this.items = JSON.parse(stringifiedItems);
+    this.updateTotalPrice();
     this.renderPaymentButtons();
+  }
+
+  updateTotalPrice() {
+    let totalPrice = 0;
+    this.items.forEach((item) => {
+      totalPrice += item.quantity * item.product.price;
+    });
+    this.totalPrice = totalPrice;
   }
 
   renderPaymentButtons(): void {
@@ -33,47 +63,44 @@ export class CheckoutComponent implements OnInit {
   }
 
   async createOrder() {
-    try {
-      const response: any = await this.httpClient
-        .post(
-          'http://localhost:5001/petai-validation/us-central1/api/payments/create-order',
-          {}
-        )
-        .toPromise();
-      return response.id;
-    } catch (err) {
-      console.error('An error occurred trying to create the order', err);
-      this.router.navigateByUrl('payment-failure');
-    }
+    const body: OrderRequest = {
+      items: this.items.filter((item) => item.quantity > 0),
+    };
+    const response: any = await this.httpClient
+      .post(
+        'http://localhost:5001/petai-validation/us-central1/api/payments/create-order',
+        body
+      )
+      .toPromise();
+    return response.id;
   }
 
   // Error handler for when the user closes the popup or cancels the payment
   async onApprove(data: any, actions: any) {
-    try {
-      await this.httpClient
-        .post(
-          'http://localhost:5001/petai-validation/us-central1/api/payments/capture-order',
-          {
-            orderID: data.orderID,
-          }
-        )
-        .toPromise();
-      // Error handler for funding failures (e.g. the transaction exceeds the card limit)
-      this.router.navigateByUrl('payment-success');
-    } catch (err) {
-      console.log('Error during http request', err);
-      this.router.navigateByUrl('payment-failure');
+    const response: any = await this.httpClient
+      .post(
+        'http://localhost:5001/petai-validation/us-central1/api/payments/capture-order',
+        {
+          orderID: data.orderID,
+        }
+      )
+      .toPromise();
+
+    // Error handler for funding failures (e.g. the transaction exceeds the card limit or the issuer rejects the payment)
+    if (response.error === 'INSTRUMENT_DECLINED') {
+      return actions.restart();
     }
+
+    this.ngZone.run(() => this.router.navigateByUrl('payment-success'));
   }
 
+  // Error handler for when the user cancels during the payment process
   onCancel() {
-    console.error('Canceled the payment');
-    this.router.navigateByUrl('payment-failure');
+    console.warn('Canceled the payment');
   }
 
-  // Error handler for when no specific error handler could be called
+  // Error handler for when an error occurrs in the createOrder or onApprove callback method and no other, more specific error handler could be found
   onError(err: any) {
-    console.error('An error occurred trying to capture the order', err);
-    this.router.navigateByUrl('payment-failure');
+    this.ngZone.run(() => this.router.navigateByUrl('payment-failure'));
   }
 }

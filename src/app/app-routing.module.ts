@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CreateComponent } from './components/create/create.component';
+import { PaymentFailureComponent } from './components/failure/payment-failure.component';
 import { ProductViewDetailComponent } from './components/product-view-detail/product-view-detail.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+  },
+  {
+    path: 'payment-success',
+    component: PaymentSuccessComponent,
+  },
+  {
+    path: 'payment-failure',
+    component: PaymentFailureComponent,
   },
   {
     path: '**',

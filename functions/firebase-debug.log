@@ -1,0 +1,31 @@
+[debug] [2021-04-10T18:29:57.627Z] ----------------------------------------------------------------------
+[debug] [2021-04-10T18:29:57.628Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jonas\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only functions
+[debug] [2021-04-10T18:29:57.629Z] CLI Version:   9.9.0
+[debug] [2021-04-10T18:29:57.629Z] Platform:      win32
+[debug] [2021-04-10T18:29:57.629Z] Node Version:  v14.16.1
+[debug] [2021-04-10T18:29:57.629Z] Time:          Sat Apr 10 2021 20:29:57 GMT+0200 (Central European Summer Time)
+[debug] [2021-04-10T18:29:57.629Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-10T18:29:57.636Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-10T18:29:57.636Z] > authorizing via signed-in user (19jonaswolfram98@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2021-04-10T18:29:57.652Z] [hub] writing locator at C:\Users\jonas\AppData\Local\Temp\hub-petai-validation.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub\u001b[22m"}}
+[warn] !  Your requested "node" version "12" doesn't match your global version "14" {"metadata":{"emulator":{"name":"functions"},"message":"Your requested \"node\" version \"12\" doesn't match your global version \"14\""}}
+[debug] [2021-04-10T18:29:57.669Z] defaultcredentials: writing to file C:\Users\jonas\AppData\Roaming\firebase\19jonaswolfram98_gmail_com_application_default_credentials.json
+[debug] [2021-04-10T18:29:57.670Z] Setting GAC to C:\Users\jonas\AppData\Roaming\firebase\19jonaswolfram98_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\jonas\\AppData\\Roaming\\firebase\\19jonaswolfram98_gmail_com_application_default_credentials.json"}}
+[debug] [2021-04-10T18:29:57.671Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/petai-validation/adminSdkConfig [none]
+[debug] [2021-04-10T18:29:58.027Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/petai-validation/adminSdkConfig 200
+[debug] [2021-04-10T18:29:58.027Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/petai-validation/adminSdkConfig {"projectId":"petai-validation","storageBucket":"petai-validation.appspot.com","locationId":"europe-west3"}
+[debug] [2021-04-10T18:29:58.041Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-04-10T18:29:58.041Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2021-04-10T18:29:58.041Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\jonas\\.cache\\firebase\\emulators\\ui-v1.4.2\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\jonas\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.4.2\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2021-04-10T18:29:58.134Z] Web / API server started at http://localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4000\n"}}
+[info] i  functions: Watching "C:\Users\jonas\Documents\git-projects\style-transfer-validation-prototype\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\jonas\\Documents\\git-projects\\style-transfer-validation-prototype\\functions\" for Cloud Functions..."}}
+[debug] [2021-04-10T18:29:58.316Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2021-04-10T18:29:58.317Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2021-04-10T18:29:58.317Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2021-04-10T18:29:58.317Z] [worker-~diagnostic~-f09230e1-0829-4ff1-b4d6-af643ef8217b]: Assigning socketPath: \\?\pipe\C:\Users\jonas\Documents\git-projects\style-transfer-validation-prototype\functions\12124 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-f09230e1-0829-4ff1-b4d6-af643ef8217b]: Assigning socketPath: \\\\?\\pipe\\C:\\Users\\jonas\\Documents\\git-projects\\style-transfer-validation-prototype\\functions\\12124"}}
+[debug] [2021-04-10T18:29:58.317Z] [worker-~diagnostic~-f09230e1-0829-4ff1-b4d6-af643ef8217b]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-f09230e1-0829-4ff1-b4d6-af643ef8217b]: BUSY"}}
