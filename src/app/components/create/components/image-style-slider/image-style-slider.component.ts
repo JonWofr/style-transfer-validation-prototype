@@ -94,7 +94,6 @@ export class ImageStyleSliderComponent implements OnInit {
         slidesPerView: 'auto',
         spaceBetween: 16,
         freeMode: true,
-        mousewheel: true,
         slidesOffsetAfter: 16,
         on: {
           afterInit: () => {
@@ -119,7 +118,6 @@ export class ImageStyleSliderComponent implements OnInit {
         slidesPerView: 'auto',
         spaceBetween: 16,
         freeMode: true,
-        mousewheel: true,
         slidesOffsetAfter: 16,
         breakpoints: {
           1000: {

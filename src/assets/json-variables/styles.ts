@@ -1,36 +1,39 @@
-export const styleJSON = [
+import { StyleImage } from 'src/app/models/style-image.model';
+
+export const styleImages: StyleImage[] = [
   {
-    image: {
-      filename: 'abstract.jpg',
-      size: 703080,
-      publicUrl:
-        'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg',
-      width: 1000,
-      height: 1000,
-      timestamp: {
-        _seconds: 1617092862,
-        _nanoseconds: 547000000,
-      },
-    },
-    artist: 'Abstract',
-    name: 'Abstract',
-    id: 'yG571A7o01wabNulmA3K',
+    publicUrl:
+      'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/sprinkle.jpg',
+    name: 'Sprinkle',
   },
   {
-    image: {
-      filename: 'abstract.jpg',
-      size: 703080,
-      publicUrl:
-        'https://storage.googleapis.com/petai-bdd53.appspot.com/style-images/abstract.jpg',
-      width: 1000,
-      height: 1000,
-      timestamp: {
-        _seconds: 1617092862,
-        _nanoseconds: 547000000,
-      },
-    },
-    artist: 'Abstract2',
-    name: 'Abstract',
-    id: 'yG571A7o01wabNulmA3K',
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/style-images/blue-monsoon.jpg',
+    name: 'Blue Monsoon',
+  },
+  {
+    publicUrl:
+      'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/newspaper.jpg',
+    name: 'Newspaper',
+  },
+  {
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/style-images/brown-watercolor.jpg',
+    name: 'Watercolor',
+  },
+  {
+    publicUrl:
+      'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/colorful-shapes.jpg',
+    name: 'Colorful Shapes',
+  },
+  {
+    publicUrl:
+      'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/modern-strokes.jpg',
+    name: 'Modern Strokes',
+  },
+  {
+    publicUrl:
+      'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/rusty-white.jpg',
+    name: 'Rusty White',
   },
 ];

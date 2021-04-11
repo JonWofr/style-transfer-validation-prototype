@@ -48,11 +48,17 @@ div.loading-indicator {
 .swiper-img-style {
   width: 100%;
   height: 150px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.swiper-img-style.img-swiper.style-selection-active {
+  flex: unset;
+  height: 300px;
 }
 
 .swiper-img-style.img-swiper {
-  height: 300px;
+  flex: 1;
+  height: 0;
   .swiper-slide {
     cursor: pointer;
     height: 100%;
