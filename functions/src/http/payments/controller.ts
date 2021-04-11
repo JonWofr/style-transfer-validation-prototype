@@ -1,10 +1,11 @@
 import * as express from 'express';
 import * as paypal from '@paypal/checkout-server-sdk';
 import * as functions from 'firebase-functions';
-import { PurchaseUnit } from '../../models/purchase-unit.model';
+import { PaypalOrdersCreateRequest } from '../../models/paypal-orders-create-request.model';
 import { Item } from '../../models/item.model';
 import * as admin from 'firebase-admin';
 import { Product } from '../../models/product.model';
+import { Order } from '../../models/order.model';
 
 const environment = new paypal.core.SandboxEnvironment(
   functions.config().paypal.publickey,
@@ -12,15 +13,20 @@ const environment = new paypal.core.SandboxEnvironment(
 );
 const client = new paypal.core.PayPalHttpClient(environment);
 
-const productsCollection = admin
-  .firestore()
+const firestore = admin.firestore();
+const getCollectionConverter = <
+  T
+>(): admin.firestore.FirestoreDataConverter<T> => ({
+  toFirestore: (data: T) => data as admin.firestore.DocumentData,
+  fromFirestore: (document: admin.firestore.QueryDocumentSnapshot) =>
+    document.data() as T,
+});
+const productsCollection = firestore
   .collection('products')
-  .withConverter({
-    toFirestore: (documentData: admin.firestore.DocumentData) =>
-      documentData as admin.firestore.DocumentData,
-    fromFirestore: (document: admin.firestore.QueryDocumentSnapshot) =>
-      document.data() as Product,
-  });
+  .withConverter(getCollectionConverter<Product>());
+const ordersCollection = firestore
+  .collection('orders')
+  .withConverter(getCollectionConverter<Order>());
 
 export const createOrder = async (
   req: express.Request,
@@ -28,21 +34,47 @@ export const createOrder = async (
 ) => {
   try {
     const { items } = req.body;
-    const purchaseUnit = await parsePurchaseUnit(items);
+    const validatedItems = await validateItems(items);
+    const body = parsePaypalOrdersCreateRequest(validatedItems);
     const request = new paypal.orders.OrdersCreateRequest();
-    request.requestBody({
-      intent: 'CAPTURE',
-      purchase_units: [purchaseUnit],
-    });
+    request.requestBody(body);
 
     const response = await client.execute(request);
     res.status(200).json(response.result);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err.message);
   }
 };
 
-const parsePurchaseUnit = async (items: Item[]): Promise<PurchaseUnit> => {
+// This method is used to counteract tampered client data. Prices and quantities of the items are validated.
+const validateItems = async (items: Item[]) => {
+  const validatedItems = await Promise.all(
+    items.map(
+      async (item): Promise<Item> => {
+        const productDocument = await productsCollection
+          .doc(item.product.id)
+          .get();
+        if (productDocument.exists === false) {
+          throw new Error(`Product with id ${item.product.id} does not exist`);
+        }
+        if (item.quantity < 1) {
+          throw new Error('The item quantity has to be greater than 0');
+        }
+        const product = productDocument.data()!;
+        return {
+          product,
+          stylizedImage: item.stylizedImage,
+          quantity: item.quantity,
+        };
+      }
+    )
+  );
+  return validatedItems;
+};
+
+const parsePaypalOrdersCreateRequest = (
+  validatedItems: Item[]
+): PaypalOrdersCreateRequest => {
   let totalPrice = 0;
   const paypalItems: {
     name: string;
@@ -52,42 +84,36 @@ const parsePurchaseUnit = async (items: Item[]): Promise<PurchaseUnit> => {
     };
     quantity: string;
   }[] = [];
-  await Promise.all(
-    items.map(async (item) => {
-      // Following lines are necessary to use the price saved in the database rather than the price sent in the client request
-      const productDocument = await productsCollection
-        .doc(item.product.id)
-        .get();
-      if (productDocument.exists === false) {
-        throw new Error(`Product with id ${item.product.id} does not exist`);
-      }
-      const product = productDocument.data()!;
-      totalPrice += item.quantity * product.price;
-      paypalItems.push({
-        name: product.name,
-        unit_amount: {
-          currency_code: 'EUR',
-          value: product.price.toString(),
-        },
-        quantity: item.quantity.toString(),
-      });
-    })
-  );
-  const purchaseUnit: PurchaseUnit = {
-    amount: {
-      currency_code: 'EUR',
-      value: totalPrice.toString(),
-      breakdown: {
-        item_total: {
+  validatedItems.map((validatedItem) => {
+    totalPrice += validatedItem.quantity * validatedItem.product.price;
+    paypalItems.push({
+      name: validatedItem.product.name,
+      unit_amount: {
+        currency_code: 'EUR',
+        value: validatedItem.product.price.toString(),
+      },
+      quantity: validatedItem.quantity.toString(),
+    });
+  });
+  const paypalOrdersCreateRequest: PaypalOrdersCreateRequest = {
+    intent: 'CAPTURE',
+    purchase_units: [
+      {
+        amount: {
           currency_code: 'EUR',
           value: totalPrice.toString(),
+          breakdown: {
+            item_total: {
+              currency_code: 'EUR',
+              value: totalPrice.toString(),
+            },
+          },
         },
+        items: paypalItems,
       },
-    },
-    items: paypalItems,
+    ],
   };
-  console.log(purchaseUnit);
-  return purchaseUnit;
+  return paypalOrdersCreateRequest;
 };
 
 export const captureOrder = async (
@@ -95,13 +121,18 @@ export const captureOrder = async (
   res: express.Response
 ) => {
   try {
-    const orderID = req.body.orderID;
-    const request = new paypal.orders.OrdersCaptureRequest(orderID);
+    const { orderId, items } = req.body;
+    const validatedItems = await validateItems(items);
+    const request = new paypal.orders.OrdersCaptureRequest(orderId);
     request.requestBody({});
     const response = await client.execute(request);
-    console.log(response);
+    const order: Order = {
+      paypalOrdersCaptureResponse: response.result,
+      items: validatedItems,
+    };
+    await ordersCollection.add(order);
     res.status(200).json(response.result);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err.message);
   }
 };

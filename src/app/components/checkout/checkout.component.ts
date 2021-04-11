@@ -8,7 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Item } from 'src/app/models/item.model';
-import { OrderRequest } from 'src/app/models/order-request.model';
+import { ClientOrdersCreateRequest } from 'src/app/models/client-orders-create-request';
+import { ClientOrdersCaptureRequest } from 'src/app/models/client-orders-capture-request';
 
 // Necessary to access the global variable paypal which is defined by the paypal script
 declare var paypal: any;
@@ -63,7 +64,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   async createOrder() {
-    const body: OrderRequest = {
+    const body: ClientOrdersCreateRequest = {
       items: this.items.filter((item) => item.quantity > 0),
     };
     const response: any = await this.httpClient
@@ -75,14 +76,15 @@ export class CheckoutComponent implements OnInit {
     return response.id;
   }
 
-  // Error handler for when the user closes the popup or cancels the payment
   async onApprove(data: any, actions: any) {
+    const body: ClientOrdersCaptureRequest = {
+      orderId: data.orderID,
+      items: this.items.filter((item) => item.quantity > 0),
+    };
     const response: any = await this.httpClient
       .post(
         'http://localhost:5001/petai-validation/us-central1/api/payments/capture-order',
-        {
-          orderID: data.orderID,
-        }
+        body
       )
       .toPromise();
 

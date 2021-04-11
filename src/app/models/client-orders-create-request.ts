@@ -1,5 +1,5 @@
 import { Item } from './item.model';
 
-export interface OrderRequest {
+export interface ClientOrdersCreateRequest {
   items: Item[];
 }
