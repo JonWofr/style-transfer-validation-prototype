@@ -38,24 +38,19 @@ export class CreateComponent implements OnInit {
   }[] = [
     {
       publicUrl: '/assets/images/stylized-image-1.jpg',
-      appliedStyleImageName: 'Composition VII',
+      appliedStyleImageName: 'Sprinkle',
     },
     {
       publicUrl: '/assets/images/stylized-image-2.jpg',
-      appliedStyleImageName: 'The Lion',
+      appliedStyleImageName: 'Sprinkle',
     },
   ];
 
   styleImages: StyleImage[] = [
     {
       publicUrl:
-        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/style-image-1.jpg',
-      name: 'Composition VII',
-    },
-    {
-      publicUrl:
-        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/style-image-2.jpg',
-      name: 'The Lion',
+        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/sprinkle.jpg',
+      name: 'Sprinkle',
     },
   ];
   selectedStyleImageIndex = 0;
@@ -123,6 +118,7 @@ export class CreateComponent implements OnInit {
           email,
           contentImagePublicUrl,
           styleImagePublicUrl: selectedStyleImage.publicUrl,
+          status: 'PENDING',
         };
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;
