@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { styleJSON } from 'src/assets/json-variables/styles';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 
 import SwiperCore, {
@@ -33,8 +32,8 @@ SwiperCore.use([
 export class ProductViewComponent implements OnInit {
   imageSrc = '/assets/images/output-129.jpg';
 
-  stylizedImages = []
-  styleImages = []
+  stylizedImages = [];
+  styleImages = [];
 
   selectedStyleIndex = 1;
 
@@ -48,12 +47,12 @@ export class ProductViewComponent implements OnInit {
     const userId = this.route.snapshot.queryParamMap.get('userId');
     if (!userId) {
       await this.router.navigateByUrl('');
-      return
+      return;
     }
-    this.stylizedImages = await this.fetchStylizedImages(userId); 
+    this.stylizedImages = await this.fetchStylizedImages(userId);
     if (this.stylizedImages.length === 0) {
       await this.router.navigateByUrl('');
-      return
+      return;
     }
     const swiper = new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
@@ -71,16 +70,19 @@ export class ProductViewComponent implements OnInit {
       .get();
     const populatedDocuments = await Promise.all(
       query.docs.map(async (document) => {
-        const documentData = document.data()
-        const referenceKey = 'stylizationJob'
-        const referencedDocument = await (documentData[referenceKey] as DocumentReference).get()
-        documentData[referenceKey] = referencedDocument.data()
-        return documentData
-      }));
+        const documentData = document.data();
+        const referenceKey = 'stylizationJob';
+        const referencedDocument = await (documentData[
+          referenceKey
+        ] as DocumentReference).get();
+        documentData[referenceKey] = referencedDocument.data();
+        return documentData;
+      })
+    );
     return populatedDocuments as any;
   }
 
   onClickStylizedImage(index: number) {
-    this.selectedStyleIndex = index
+    this.selectedStyleIndex = index;
   }
 }

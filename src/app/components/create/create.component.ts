@@ -7,6 +7,8 @@ import { StylizationJob } from 'src/app/models/stylization-job.model';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { v4 as uuidv4 } from 'uuid';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
+import { stylizedImagePreviews } from 'src/assets/json-variables/stylizedImages';
+import { styleImages } from 'src/assets/json-variables/styles';
 
 @Component({
   selector: 'page-create',
@@ -32,27 +34,13 @@ export class CreateComponent implements OnInit {
     publicUrl: string;
     appliedStyleImageName: string;
   }[] = [];
+
   stylizedImagePreviews: {
     publicUrl: string;
     appliedStyleImageName: string;
-  }[] = [
-    {
-      publicUrl: '/assets/images/stylized-image-1.jpg',
-      appliedStyleImageName: 'Sprinkle',
-    },
-    {
-      publicUrl: '/assets/images/stylized-image-2.jpg',
-      appliedStyleImageName: 'Sprinkle',
-    },
-  ];
+  }[] = stylizedImagePreviews;
 
-  styleImages: StyleImage[] = [
-    {
-      publicUrl:
-        'https://storage.cloud.google.com/petai-validation.appspot.com/style-images/sprinkle.jpg',
-      name: 'Sprinkle',
-    },
-  ];
+  styleImages: StyleImage[] = styleImages;
   selectedStyleImageIndex = 0;
 
   isUploadingImage = false;
