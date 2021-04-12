@@ -1,13 +1,13 @@
 <div class="container">
   <div class="square-ratio">
     <img
-      [src]="stylizedImages[selectedStyleIndex]?.publicUrl"
+      [src]="stylizedImages[selectedStylizedImageIndex]?.publicUrl"
       alt=""
       class="background-image"
     />
     <img
       class="selected-image"
-      [src]="stylizedImages[selectedStyleIndex]?.publicUrl"
+      [src]="stylizedImages[selectedStylizedImageIndex]?.publicUrl"
       alt=""
     />
   </div>
@@ -23,8 +23,14 @@
         <div class="image-wrapper">
           <img [src]="stylizedImage.publicUrl" alt="" />
         </div>
-        <div class="overlay" [class.selected]="i === selectedStyleIndex">
-          <img  *ngIf="i === selectedStyleIndex" src="/assets/icons/hook.svg" />
+        <div
+          class="overlay"
+          [class.selected]="i === selectedStylizedImageIndex"
+        >
+          <img
+            *ngIf="i === selectedStylizedImageIndex"
+            src="/assets/icons/hook.svg"
+          />
         </div>
       </div>
     </div>

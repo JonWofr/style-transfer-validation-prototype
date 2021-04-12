@@ -6,21 +6,17 @@ import { Item } from '../../models/item.model';
 import * as admin from 'firebase-admin';
 import { Product } from '../../models/product.model';
 import { Order } from '../../models/order.model';
+import { getCollectionConverter } from '../../utils/database-helper';
+import { sendMail } from '../../utils/mail-helper';
 
 const environment = new paypal.core.SandboxEnvironment(
-  functions.config().paypal.clientId,
+  functions.config().paypal.client_id,
   functions.config().paypal.secret
 );
 const client = new paypal.core.PayPalHttpClient(environment);
 
 const firestore = admin.firestore();
-const getCollectionConverter = <
-  T
->(): admin.firestore.FirestoreDataConverter<T> => ({
-  toFirestore: (data: T) => data as admin.firestore.DocumentData,
-  fromFirestore: (document: admin.firestore.QueryDocumentSnapshot) =>
-    document.data() as T,
-});
+
 const productsCollection = firestore
   .collection('products')
   .withConverter(getCollectionConverter<Product>());
@@ -33,6 +29,7 @@ export const createOrder = async (
   res: express.Response
 ) => {
   try {
+    console.log(functions.config().paypal.client_id);
     const { items } = req.body;
     const validatedItems = await validateItems(items);
     const body = parsePaypalOrdersCreateRequest(validatedItems);
@@ -131,8 +128,16 @@ export const captureOrder = async (
       items: validatedItems,
     };
     await ordersCollection.add(order);
+    await sendConfirmationMail(response.result.payer.email_address);
     res.status(200).json(response.result);
   } catch (err) {
     res.status(500).send(err.message);
   }
+};
+
+export const sendConfirmationMail = async (recipient: string) => {
+  const emailBody = `
+    Thank you for your purchase
+  `;
+  await sendMail(recipient, 'Your purchase as PetAI', emailBody);
 };

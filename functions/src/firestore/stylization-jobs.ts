@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import { sendMail } from '../utils/mail-service';
+import { sendMail } from '../utils/mail-helper';
 import { StylizationJob } from '../models/stylization-job.model';
 
 export const onCreateStylizationJob = async (
@@ -18,5 +18,9 @@ export const onCreateStylizationJob = async (
                 Style image: <a href=${stylizationJob.styleImagePublicUrl}>${stylizationJob.styleImagePublicUrl}</a>
             </p>
         `;
-  await sendMail('jonas-wolfram@web.de', 'Neuer Job', emailBody);
+  await sendMail(
+    functions.config().nodemailer.stylization_job_mail_recipients,
+    'Neuer Job',
+    emailBody
+  );
 };

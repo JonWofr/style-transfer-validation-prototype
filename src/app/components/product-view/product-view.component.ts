@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  DocumentData,
+  DocumentReference,
+  DocumentSnapshot,
+  SnapshotOptions,
+} from '@angular/fire/firestore';
 
 import SwiperCore, {
   Navigation,
@@ -33,9 +39,12 @@ export class ProductViewComponent implements OnInit {
   imageSrc = '/assets/images/output-129.jpg';
 
   stylizedImages = [];
-  styleImages = [];
 
-  selectedStyleIndex = 1;
+  selectedStylizedImageIndex = 0;
+
+  stylizedImagesCollection = this.firestore
+    .collection('stylized-images')
+    .ref.withConverter(this.getCollectionConverter<StylizedImage>(false));
 
   constructor(
     private firestore: AngularFirestore,
@@ -63,26 +72,33 @@ export class ProductViewComponent implements OnInit {
     });
   }
 
+  getCollectionConverter<T>(shouldAddId) {
+    const collectionConverter = {
+      toFirestore(documentData: T): DocumentData {
+        return documentData as DocumentData;
+      },
+      fromFirestore(
+        snapshot: DocumentSnapshot<DocumentData>,
+        options: SnapshotOptions
+      ): T {
+        const data = snapshot.data(options);
+        if (shouldAddId) {
+          data.id = snapshot.id;
+        }
+        return data as T;
+      },
+    };
+    return collectionConverter;
+  }
+
   async fetchStylizedImages(userId: string) {
-    const query = await this.firestore
-      .collection('stylized-images')
-      .ref.where('userId', '==', userId)
+    const query = await this.stylizedImagesCollection
+      .where('userId', '==', userId)
       .get();
-    const populatedDocuments = await Promise.all(
-      query.docs.map(async (document) => {
-        const documentData = document.data();
-        const referenceKey = 'stylizationJob';
-        const referencedDocument = await (documentData[
-          referenceKey
-        ] as DocumentReference).get();
-        documentData[referenceKey] = referencedDocument.data();
-        return documentData;
-      })
-    );
-    return populatedDocuments as any;
+    return query.docs.map((document) => document.data());
   }
 
   onClickStylizedImage(index: number) {
-    this.selectedStyleIndex = index;
+    this.selectedStylizedImageIndex = index;
   }
 }
