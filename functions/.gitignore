@@ -10,3 +10,6 @@ node_modules/
 
 # Environment variables
 .runtimeconfig.json
+
+# Logging files
+**/*.log

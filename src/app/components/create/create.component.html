@@ -1,9 +1,9 @@
 <div class="gray-background-box"></div>
 <div class="container">
-  <div class="square-ratio" [class.applying-style]="isApplyingStyle">
+  <div class="square-ratio" [class.applying-style]="shouldShowSpinner">
     <img class="selected-image" [src]="imageSrc" alt="" />
     <img
-      *ngIf="isApplyingStyle"
+      *ngIf="shouldShowSpinner"
       src="/assets/icons/loading-spinner.svg"
       alt=""
       class="spinner"

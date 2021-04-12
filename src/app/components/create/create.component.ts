@@ -44,7 +44,7 @@ export class CreateComponent implements OnInit {
   selectedStyleImageIndex = 0;
 
   isUploadingImage = false;
-  isApplyingStyle = false;
+  shouldShowSpinner = false;
 
   submittedImagesCount = 0;
   maxSubmittedImagesCount = 3;
@@ -96,7 +96,7 @@ export class CreateComponent implements OnInit {
       const querySize = query.size;
 
       if (querySize < 3) {
-        this.isApplyingStyle = true;
+        this.shouldShowSpinner = true;
         const contentImagePublicUrl = await this.uploadFile(this.selectedFile);
         const selectedStyleImage = this.styleImages[
           this.selectedStyleImageIndex
@@ -111,7 +111,7 @@ export class CreateComponent implements OnInit {
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;
         this.submittedImagesCount = querySize + 1;
-        this.isApplyingStyle = false;
+        this.shouldShowSpinner = false;
         this.analytics.logEvent('purchase', {
           value: selectedStyleImage.name,
         });

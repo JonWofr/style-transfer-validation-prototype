@@ -36,9 +36,10 @@
     >
       <div class="swiper-wrapper">
         <shared-style-circle
-          *ngFor="let styleImage of styleImages"
+          *ngFor="let styleImage of styleImages; let i = index"
           [styleImage]="styleImage"
           [verticalLayout]="!isHorizontalMode"
+          [isSelected]="i === selectedStyleIndex"
           class="swiper-slide"
         ></shared-style-circle>
       </div>

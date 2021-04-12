@@ -11,61 +11,84 @@
       <img class="swiper-slide" src="./assets/images/husky-styled.jpg" alt="" />
     </div>
   </div>
-  <div class="stylized-images">
-    <div *ngFor="let stylizedImage of stylizedImages; let index = index">
-      <div>
-        <div class="image-wrapper">
-          <img [src]="stylizedImage.publicUrl" alt="" />
-        </div>
-        <div class="overlay"></div>
-        <div class="stepper">
-          <button
-            (click)="decrementStepper(index)"
-            [disabled]="items[index]?.quantity === 0"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
+
+  <section class="product-selection">
+    <h2>Select your product type:</h2>
+    <ul>
+      <li>
+        <input id="canvas" type="radio" name="product" value="Canvas" checked />
+        <label for="canvas"> Canvas </label>
+      </li>
+      <li>
+        <input
+          id="hd-download"
+          type="radio"
+          name="product"
+          value="HD Download"
+        />
+        <label for="hd-download" label="hd-download"> HD Download </label>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Select the results you want to have as a print:</h2>
+    <div class="stylized-images">
+      <div *ngFor="let stylizedImage of stylizedImages; let index = index">
+        <div>
+          <div class="image-wrapper">
+            <img [src]="stylizedImage.publicUrl" alt="" />
+          </div>
+          <div class="overlay"></div>
+          <div class="stepper">
+            <button
+              (click)="decrementStepper(index)"
+              [disabled]="items[index]?.quantity === 0"
             >
-              <path
-                id="Pfad_19"
-                data-name="Pfad 19"
-                d="M9,0a9,9,0,1,0,9,9A9,9,0,0,0,9,0Zm4.5,9.75h-9V8.25h9Z"
-                fill="#fff"
-              />
-            </svg>
-          </button>
-          <p>{{ items[index].quantity }}</p>
-          <button (click)="incrementStepper(index)">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-            >
-              <path
-                id="Pfad_18"
-                data-name="Pfad 18"
-                d="M9,0a9,9,0,1,0,9,9A9,9,0,0,0,9,0Zm4.5,9.75H9.75V13.5H8.25V9.75H4.5V8.25H8.25V4.5h1.5V8.25H13.5Z"
-                fill="#fff"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  id="Pfad_19"
+                  data-name="Pfad 19"
+                  d="M9,0a9,9,0,1,0,9,9A9,9,0,0,0,9,0Zm4.5,9.75h-9V8.25h9Z"
+                  fill="#fff"
+                />
+              </svg>
+            </button>
+            <p>{{ items[index].quantity }}</p>
+            <button (click)="incrementStepper(index)">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  id="Pfad_18"
+                  data-name="Pfad 18"
+                  d="M9,0a9,9,0,1,0,9,9A9,9,0,0,0,9,0Zm4.5,9.75H9.75V13.5H8.25V9.75H4.5V8.25H8.25V4.5h1.5V8.25H13.5Z"
+                  fill="#fff"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="order-section">
+  <section class="order">
     <p class="price">Total: {{ totalPrice }}€ <span>VAT inclusive</span></p>
     <button (click)="onClickCheckoutButton()" [disabled]="totalPrice === 0">
       Check-Out
     </button>
-  </div>
+  </section>
 
-  <div class="info-section">
+  <section class="info">
     <div class="info-toggle">
       <p
         [class.selected]="isDesriptionSlideActive"
@@ -112,5 +135,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>

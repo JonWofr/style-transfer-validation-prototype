@@ -5,11 +5,8 @@
 >
   <img class="style-image" [src]="styleImage?.publicUrl" alt="" />
 
-  <!-- <img
-    *ngIf="isSelected"
-    class="hook"
-    src="/assets/icons/hook.svg"
-    alt="selected style"
-  /> -->
+  <div class="overlay" [class.selected]="isSelected">
+    <img *ngIf="isSelected" src="/assets/icons/hook.svg" />
+  </div>
 </div>
 <p class="style-title">{{ styleImage?.name }}</p>
