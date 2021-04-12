@@ -86,8 +86,6 @@ export class ImageStyleSliderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @ViewChild('swiperSlide') set swiperSlide(el: ElementRef) {}
-
   @ViewChild('imgSwiper') set _imgSwiper(el: ElementRef) {
     if (el) {
       this.imgSwiper = new Swiper('.img-swiper', {
@@ -113,7 +111,7 @@ export class ImageStyleSliderComponent implements OnInit {
   }
 
   @ViewChild('styleSwiper') set _styleSwiper(el: ElementRef) {
-    if (el) {
+    if (el && this.styleSwiper === undefined) {
       this.styleSwiper = new Swiper('.style-swiper', {
         slidesPerView: 'auto',
         spaceBetween: 16,
@@ -129,6 +127,7 @@ export class ImageStyleSliderComponent implements OnInit {
         },
         on: {
           click: (swiper: Swiper) => {
+            console.log(swiper);
             this.updateSelectedStyleIndex(swiper.clickedIndex);
           },
           afterInit: () => {
@@ -139,6 +138,13 @@ export class ImageStyleSliderComponent implements OnInit {
         },
       });
       this.isHorizontalMode = this.styleSwiper.params.direction == 'horizontal';
+    }
+  }
+
+  onChangeShouldShowFitStyleView() {
+    this.changeShouldShowFitStyleView.emit(!this.shouldShowFitStyleView);
+    if (this.shouldShowFitStyleView) {
+      this.styleSwiper = undefined;
     }
   }
 
