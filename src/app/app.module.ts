@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CreateModule } from './components/create/create.module';
 import { CreateComponent } from './components/create/create.component';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import {
@@ -48,6 +48,13 @@ import { PaymentFailureComponent } from './components/failure/payment-failure.co
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
+    {
+      provide: SETTINGS,
+      useValue: {
+        host: 'localhost:8080',
+        ssl: false,
+      },
+    },
     ScreenTrackingService,
     UserTrackingService,
   ],

@@ -106,6 +106,7 @@ export class CreateComponent implements OnInit {
           email,
           contentImagePublicUrl,
           styleImagePublicUrl: selectedStyleImage.publicUrl,
+          status: 'PENDING',
         };
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;

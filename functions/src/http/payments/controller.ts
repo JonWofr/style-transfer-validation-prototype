@@ -8,8 +8,8 @@ import { Product } from '../../models/product.model';
 import { Order } from '../../models/order.model';
 
 const environment = new paypal.core.SandboxEnvironment(
-  functions.config().paypal.publickey,
-  functions.config().paypal.privatekey
+  functions.config().paypal.clientId,
+  functions.config().paypal.secret
 );
 const client = new paypal.core.PayPalHttpClient(environment);
 

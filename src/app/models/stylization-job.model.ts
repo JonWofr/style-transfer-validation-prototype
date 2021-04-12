@@ -3,4 +3,5 @@ export interface StylizationJob {
   styleImagePublicUrl: string;
   email: string;
   userId: string;
+  status: 'PENDING' | 'COMPLETED';
 }
