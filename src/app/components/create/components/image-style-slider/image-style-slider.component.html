@@ -13,7 +13,7 @@
     [class.btn-hide]="selectedStyleIndex === undefined"
     [class.btn-back]="shouldShowFitStyleView"
     class="apply-style-btn"
-    (click)="changeShouldShowFitStyleView.emit(!shouldShowFitStyleView)"
+    (click)="onChangeShouldShowFitStyleView()"
   >
     {{ shouldShowFitStyleView ? "Back" : "Apply This Style" }}
   </button>
