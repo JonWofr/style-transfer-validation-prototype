@@ -18,7 +18,7 @@ export const sendMail = async (
   html: string
 ) => {
   const mailOptions = {
-    from: `${functions.config().nodemailer.display_name} <${
+    from: `"${functions.config().nodemailer.display_name}" <${
       functions.config().nodemailer.username
     }>`,
     to: recipient,

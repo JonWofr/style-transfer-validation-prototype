@@ -1,4 +1,4 @@
-import * as functions from 'firebase-functions';
+/* import * as functions from 'firebase-functions';
 // import { StylizationJob } from '../models/stylization-job.model';
 import { StylizedImage } from '../models/stylized-image.model';
 import { sendMail } from '../utils/mail-helper';
@@ -41,3 +41,4 @@ export const onCreateStylizedImage = async (
     console.error(err);
   }
 };
+ */

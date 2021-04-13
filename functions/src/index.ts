@@ -5,13 +5,13 @@ import * as admin from 'firebase-admin';
 admin.initializeApp();
 
 import { app } from './http';
-import { onCreateStylizedImage } from './firestore/stylized-images';
+// import { onCreateStylizedImage } from './firestore/stylized-images';
 import { onCreateStylizationJob } from './firestore/stylization-jobs';
 
 export const api = functions.https.onRequest(app);
 export const createStylizationJob = functions.firestore
   .document('stylization-jobs/{stylizationJobId}')
   .onCreate(onCreateStylizationJob);
-export const createStylizedImage = functions.firestore
+/* export const createStylizedImage = functions.firestore
   .document('stylized-images/{stylizedImageId}')
-  .onCreate(onCreateStylizedImage);
+  .onCreate(onCreateStylizedImage); */

@@ -40,6 +40,7 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     this.items = JSON.parse(stringifiedItems);
+    localStorage.removeItem('items');
     this.updateTotalPrice();
     this.renderPaymentButtons();
   }

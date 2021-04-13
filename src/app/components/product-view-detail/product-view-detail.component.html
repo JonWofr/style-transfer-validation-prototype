@@ -1,30 +1,32 @@
 <div class="wrapper">
   <div class="swiper-container product-demo-swiper">
     <div class="swiper-wrapper">
-      <img
-        class="swiper-slide"
-        src="./assets/images/product-preview.png"
-        alt=""
-      />
-      <img class="swiper-slide" src="./assets/images/husky-styled.jpg" alt="" />
+      <ng-container *ngFor="let stylizedImage of stylizedImages">
+        <img
+          *ngFor="
+            let slideshowImagePublicUrl of stylizedImage.slideshowImagePublicUrls
+          "
+          class="swiper-slide"
+          [src]="slideshowImagePublicUrl"
+          alt=""
+        />
+      </ng-container>
     </div>
   </div>
 
   <section class="product-selection">
     <h2>Select your product type:</h2>
     <ul>
-      <li>
-        <input id="canvas" type="radio" name="product" value="Canvas" checked />
-        <label for="canvas"> Canvas </label>
-      </li>
-      <li>
+      <li *ngFor="let product of products; let index = index">
         <input
-          id="hd-download"
+          [id]="product.id"
           type="radio"
           name="product"
-          value="HD Download"
+          value="Canvas"
+          [checked]="index === selectedProductIndex"
+          (change)="onChangeProduct(index)"
         />
-        <label for="hd-download" label="hd-download"> HD Download </label>
+        <label [for]="product.id"> {{ product.name }} </label>
       </li>
     </ul>
   </section>
@@ -41,7 +43,7 @@
           <div class="stepper">
             <button
               (click)="decrementStepper(index)"
-              [disabled]="items[index]?.quantity === 0"
+              [disabled]="items[index].quantity === 0"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +60,13 @@
               </svg>
             </button>
             <p>{{ items[index].quantity }}</p>
-            <button (click)="incrementStepper(index)">
+            <button
+              (click)="incrementStepper(index)"
+              [disabled]="
+                products[selectedProductIndex].name === 'DigitalHD' &&
+                items[index].quantity === 1
+              "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
