@@ -83,6 +83,15 @@
   }
 }
 
+.privacy-policy {
+  font-family: m-reg;
+  text-decoration: none;
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 @media (min-width: 1000px) {
   :host {
     width: calc(100% - 29rem);

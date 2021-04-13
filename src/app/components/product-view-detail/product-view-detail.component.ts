@@ -57,7 +57,7 @@ export class ProductViewDetailComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    const userId = this.route.snapshot.queryParamMap.get('userId');
+    /*     const userId = this.route.snapshot.queryParamMap.get('userId');
     if (!userId) {
       await this.router.navigateByUrl('');
       return;
@@ -72,7 +72,7 @@ export class ProductViewDetailComponent implements OnInit {
       product: products.find((product) => product.name === 'Canvas'),
       stylizedImage,
       quantity: 0,
-    }));
+    })); */
 
     new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
@@ -86,8 +86,8 @@ export class ProductViewDetailComponent implements OnInit {
       spaceBetween: 16,
       allowTouchMove: false,
     });
-    this.stylizedImages = stylizedImages;
-    this.items = items;
+    /*     this.stylizedImages = stylizedImages;
+    this.items = items; */
   }
 
   getCollectionConverter<T>(shouldAddId) {

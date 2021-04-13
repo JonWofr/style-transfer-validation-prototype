@@ -53,7 +53,7 @@ export class ProductViewComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    const userId = this.route.snapshot.queryParamMap.get('userId');
+    /*     const userId = this.route.snapshot.queryParamMap.get('userId');
     if (!userId) {
       await this.router.navigateByUrl('');
       return;
@@ -62,7 +62,7 @@ export class ProductViewComponent implements OnInit {
     if (this.stylizedImages.length === 0) {
       await this.router.navigateByUrl('');
       return;
-    }
+    } */
     const swiper = new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
       spaceBetween: 16,

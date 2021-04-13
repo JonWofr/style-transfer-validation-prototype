@@ -127,7 +127,6 @@ export class ImageStyleSliderComponent implements OnInit {
         },
         on: {
           click: (swiper: Swiper) => {
-            console.log(swiper);
             this.updateSelectedStyleIndex(swiper.clickedIndex);
           },
           afterInit: () => {
