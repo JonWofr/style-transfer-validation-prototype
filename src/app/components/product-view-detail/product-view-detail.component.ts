@@ -42,6 +42,8 @@ export class ProductViewDetailComponent implements OnInit {
   descriptionSwiper: Swiper;
   isDesriptionSlideActive = true;
   totalPrice = 0;
+  products: Product[] = [];
+  selectedProductIndex: number;
 
   stylizedImagesCollection = this.firestore
     .collection('stylized-images')
@@ -57,7 +59,7 @@ export class ProductViewDetailComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    /*     const userId = this.route.snapshot.queryParamMap.get('userId');
+    const userId = this.route.snapshot.queryParamMap.get('userId');
     if (!userId) {
       await this.router.navigateByUrl('');
       return;
@@ -67,12 +69,17 @@ export class ProductViewDetailComponent implements OnInit {
       await this.router.navigateByUrl('');
       return;
     }
-    const products = await this.fetchProducts();
-    const items = stylizedImages.map((stylizedImage) => ({
-      product: products.find((product) => product.name === 'Canvas'),
+    this.products = await this.fetchProducts();
+    this.selectedProductIndex = this.products.findIndex(
+      (product) => product.name === 'Canvas'
+    );
+
+    this.items = stylizedImages.map((stylizedImage) => ({
+      product: this.products[this.selectedProductIndex],
       stylizedImage,
       quantity: 0,
-    })); */
+    }));
+    this.stylizedImages = stylizedImages;
 
     new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
@@ -80,14 +87,13 @@ export class ProductViewDetailComponent implements OnInit {
       autoplay: {
         delay: 4000,
       },
+      observer: true,
     });
     this.descriptionSwiper = new Swiper('.product-info-swiper', {
       slidesPerView: 1,
       spaceBetween: 16,
       allowTouchMove: false,
     });
-    /*     this.stylizedImages = stylizedImages;
-    this.items = items; */
   }
 
   getCollectionConverter<T>(shouldAddId) {
@@ -147,5 +153,15 @@ export class ProductViewDetailComponent implements OnInit {
   onClickCheckoutButton() {
     localStorage.setItem('items', JSON.stringify(this.items));
     this.router.navigateByUrl('/checkout');
+  }
+
+  onChangeProduct(productIndex: number) {
+    this.selectedProductIndex = productIndex;
+    this.items = this.stylizedImages.map((stylizedImage) => ({
+      quantity: 0,
+      product: this.products[this.selectedProductIndex],
+      stylizedImage,
+    }));
+    this.updateTotalPrice();
   }
 }

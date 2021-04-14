@@ -5,4 +5,5 @@ export interface StylizedImage {
   publicUrl: string;
   userId: string;
   stylizationJob: DocumentReference<StylizationJob>;
+  slideshowImagePublicUrls: string[];
 }

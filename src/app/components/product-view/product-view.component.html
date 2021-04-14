@@ -59,7 +59,12 @@
           </div>
         </div>
       </div>
-      <button>More Information</button>
+      <button
+        routerLink="/product-view/detail"
+        [queryParams]="{ userId: userId }"
+      >
+        More Information
+      </button>
     </div>
     <div class="offer-section">
       <h3 class="offer-text">
@@ -69,16 +74,16 @@
       <div class="product-demo-box">
         <div class="swiper-container product-demo-swiper">
           <div class="swiper-wrapper">
-            <img
-              class="swiper-slide"
-              src="./assets/images/product-preview.png"
-              alt=""
-            />
-            <img
-              class="swiper-slide"
-              src="./assets/images/husky-styled.jpg"
-              alt=""
-            />
+            <ng-container *ngFor="let stylizedImage of stylizedImages">
+              <img
+                *ngFor="
+                  let slideshowImagePublicUrl of stylizedImage.slideshowImagePublicUrls
+                "
+                class="swiper-slide"
+                [src]="slideshowImagePublicUrl"
+                alt=""
+              />
+            </ng-container>
           </div>
         </div>
         <div class="product-specs">
@@ -86,7 +91,12 @@
           <p class="dimensions">30x45cm</p>
         </div>
       </div>
-      <button>More Information</button>
+      <button
+        routerLink="/product-view/detail"
+        [queryParams]="{ userId: userId }"
+      >
+        More Information
+      </button>
     </div>
 
     <div id="basic" class="offer-section">

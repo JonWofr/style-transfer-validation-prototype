@@ -46,6 +46,8 @@ export class ProductViewComponent implements OnInit {
     .collection('stylized-images')
     .ref.withConverter(this.getCollectionConverter<StylizedImage>(false));
 
+  userId: string;
+
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
@@ -53,22 +55,23 @@ export class ProductViewComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    /*     const userId = this.route.snapshot.queryParamMap.get('userId');
-    if (!userId) {
+    this.userId = this.route.snapshot.queryParamMap.get('userId');
+    if (!this.userId) {
       await this.router.navigateByUrl('');
       return;
     }
-    this.stylizedImages = await this.fetchStylizedImages(userId);
+    this.stylizedImages = await this.fetchStylizedImages(this.userId);
     if (this.stylizedImages.length === 0) {
       await this.router.navigateByUrl('');
       return;
-    } */
-    const swiper = new Swiper('.product-demo-swiper', {
+    }
+    new Swiper('.product-demo-swiper', {
       slidesPerView: 1,
       spaceBetween: 16,
       autoplay: {
         delay: 4000,
       },
+      observer: true,
     });
   }
 

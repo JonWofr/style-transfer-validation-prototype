@@ -91,20 +91,13 @@ export class ImageStyleSliderComponent implements OnInit {
       this.imgSwiper = new Swiper('.img-swiper', {
         slidesPerView: 'auto',
         spaceBetween: 16,
-        freeMode: true,
         slidesOffsetAfter: 16,
-        on: {
-          afterInit: () => {
-            setTimeout(() => {
-              this.imgSwiper.update();
-            });
-          },
-        },
         breakpoints: {
           1000: {
             direction: 'vertical',
           },
         },
+        observer: true,
       });
       this.isHorizontalMode = this.imgSwiper.params.direction == 'horizontal';
     }
@@ -115,7 +108,6 @@ export class ImageStyleSliderComponent implements OnInit {
       this.styleSwiper = new Swiper('.style-swiper', {
         slidesPerView: 'auto',
         spaceBetween: 16,
-        freeMode: true,
         slidesOffsetAfter: 16,
         breakpoints: {
           1000: {
@@ -129,12 +121,8 @@ export class ImageStyleSliderComponent implements OnInit {
           click: (swiper: Swiper) => {
             this.updateSelectedStyleIndex(swiper.clickedIndex);
           },
-          afterInit: () => {
-            setTimeout(() => {
-              this.styleSwiper.update();
-            });
-          },
         },
+        observer: true,
       });
       this.isHorizontalMode = this.styleSwiper.params.direction == 'horizontal';
     }
@@ -163,10 +151,7 @@ export class ImageStyleSliderComponent implements OnInit {
     if (index !== undefined) {
       this.selectedStyleIndex = index;
       this.changeSelectedStyleIndex.emit(index);
-      setTimeout(() => {
-        this.imgSwiper.update();
-        this.imgSwiper.slideTo(0);
-      }, 200);
+      this.imgSwiper.slideTo(0);
     }
   }
 
