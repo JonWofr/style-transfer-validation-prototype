@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-payment-success',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-success.component.scss'],
 })
 export class PaymentSuccessComponent implements OnInit {
-  constructor() {}
+  userEmail: string = '';
 
-  ngOnInit(): void {}
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.userEmail = this.route.snapshot.queryParamMap.get('userEmail');
+  }
 }

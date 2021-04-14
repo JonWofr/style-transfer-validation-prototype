@@ -21,7 +21,7 @@ import { ProductViewDetailComponent } from './components/product-view-detail/pro
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
-import { PaymentFailureComponent } from './components/failure/payment-failure.component';
+import { PaymentFailureComponent } from './components/payment-failure/payment-failure.component';
 
 @NgModule({
   declarations: [
