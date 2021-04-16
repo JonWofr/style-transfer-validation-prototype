@@ -104,4 +104,8 @@ export class ProductViewComponent implements OnInit {
   onClickStylizedImage(index: number) {
     this.selectedStylizedImageIndex = index;
   }
+
+  onClickDownloadButton() {
+    console.log('downloading');
+  }
 }

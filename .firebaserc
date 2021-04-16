@@ -4,11 +4,7 @@
   },
   "targets": {
     "petai-validation": {
-      "hosting": {
-        "default": [
-          "pet-ai"
-        ]
-      }
+      "hosting": {}
     }
   }
 }

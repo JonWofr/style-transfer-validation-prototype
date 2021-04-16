@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "scripts": {
-    "lint": "eslint --ext .js,.ts .",
+    "lint": "",
     "build": "tsc",
     "build:watch": "tsc -w",
     "serve": "firebase emulators:start --import=../firestore-emulator-data --export-on-exit",

@@ -94,7 +94,11 @@ export class CheckoutComponent implements OnInit {
       return actions.restart();
     }
 
-    this.ngZone.run(() => this.router.navigateByUrl('payment-success'));
+    this.ngZone.run(() =>
+      this.router.navigateByUrl(
+        `payment-success?userEmail=${response.paypalOrdersCaptureResponse.payer.email_address}`
+      )
+    );
   }
 
   // Error handler for when the user cancels during the payment process

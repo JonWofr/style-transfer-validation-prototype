@@ -29,7 +29,6 @@ export const createOrder = async (
   res: express.Response
 ) => {
   try {
-    console.log(functions.config().paypal.client_id);
     const { items } = req.body;
     const validatedItems = await validateItems(items);
     const body = parsePaypalOrdersCreateRequest(validatedItems);

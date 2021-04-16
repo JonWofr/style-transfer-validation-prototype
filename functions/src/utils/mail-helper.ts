@@ -3,7 +3,7 @@ import * as functions from 'firebase-functions';
 
 const nodemailerConfig = {
   host: functions.config().nodemailer.host,
-  port: functions.config().nodemailer.port,
+  port: parseInt(functions.config().nodemailer.port),
   secure: false,
   auth: {
     user: functions.config().nodemailer.username,
