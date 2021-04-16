@@ -8,10 +8,10 @@
   <form (submit)="onSubmitForm($event)" ngNativeValidate>
     <h2>Where should we send your free artpiece?</h2>
     <input
-      #email
+      name="email"
       type="email"
       placeholder="E-Mail"
-      (keyup)="onChangeEmail(email.value)"
+      [(ngModel)]="email"
       required
     />
     <ul>

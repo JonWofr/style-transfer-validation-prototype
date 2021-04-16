@@ -48,7 +48,7 @@ import { PaymentFailureComponent } from './components/payment-failure/payment-fa
   ],
   providers: [
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
-    {
+    /*     {
       provide: SETTINGS,
       useValue: !environment.production
         ? {
@@ -56,7 +56,7 @@ import { PaymentFailureComponent } from './components/payment-failure/payment-fa
             ssl: false,
           }
         : undefined,
-    },
+    }, */
     ScreenTrackingService,
     UserTrackingService,
   ],

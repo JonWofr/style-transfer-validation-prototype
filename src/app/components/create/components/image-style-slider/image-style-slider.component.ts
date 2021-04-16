@@ -39,6 +39,8 @@ SwiperCore.use([
 export class ImageStyleSliderComponent implements OnInit {
   constructor(private route: Router) {}
 
+  @Input() email = '';
+
   @Output() clickAddImageButton = new EventEmitter<void>();
 
   @Input() selectedImageIndex = 0;

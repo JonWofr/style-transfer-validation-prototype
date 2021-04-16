@@ -9,7 +9,7 @@ export class SubmitComponent implements OnInit {
   @Input() styleImageName: string;
   @Input() styleImageUrl: string;
   @Output() submitForm = new EventEmitter<string>();
-  email?: string;
+  @Input() email = '';
 
   constructor() {}
 

@@ -22,6 +22,7 @@
   </button>
 
   <create-submit
+    [email]="email"
     [styleImageName]="styleImages[selectedStyleIndex]?.name"
     [styleImageUrl]="styleImages[selectedStyleIndex]?.publicUrl"
     *ngIf="shouldShowFitStyleView"

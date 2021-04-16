@@ -33,6 +33,7 @@ export class CreateComponent implements OnInit {
   shouldShowUploadModal = false;
   shouldShowResponseModal = false;
   shouldShowFitStyleView = false;
+  email = '';
 
   matchingStylizedImagePreviews: {
     publicUrl: string;
@@ -98,6 +99,7 @@ export class CreateComponent implements OnInit {
 
   async onSubmitForm(email: string) {
     try {
+      this.email = email;
       const userId = await this.getUserId();
       const colRef = this.firestore.collection('stylization-jobs').ref;
       const query = await colRef.where('userId', '==', userId).get();
