@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: CreateComponent,
   },
-  {
+  /*   {
     path: 'product-view',
     component: ProductViewComponent,
   },
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: 'payment-failure',
     component: PaymentFailureComponent,
-  },
+  }, */
   {
     path: '**',
     redirectTo: '',
