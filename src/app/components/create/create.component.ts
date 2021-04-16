@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { stylizedImagePreviews } from 'src/assets/json-variables/stylizedImages';
 import { styleImages } from 'src/assets/json-variables/styles';
+import { initStylizedImagePreviews } from 'src/assets/json-variables/initStylizedImages';
 
 @Component({
   selector: 'page-create',
@@ -24,7 +25,7 @@ export class CreateComponent implements OnInit {
     private analytics: AngularFireAnalytics
   ) {}
 
-  imageSrc = '/assets/images/upload-picture.svg';
+  imageSrc = '/assets/images/upload-picture.png';
   selectedFile?: File;
   shouldShowUploadModal = false;
   shouldShowResponseModal = false;
@@ -38,7 +39,7 @@ export class CreateComponent implements OnInit {
   stylizedImagePreviews: {
     publicUrl: string;
     appliedStyleImageName: string;
-  }[] = stylizedImagePreviews;
+  }[] = initStylizedImagePreviews;
 
   styleImages: StyleImage[] = styleImages;
   selectedStyleImageIndex = 0;
@@ -51,7 +52,6 @@ export class CreateComponent implements OnInit {
   hasCreatedNewDocument = false;
 
   ngOnInit(): void {
-    this.shuffle(this.stylizedImagePreviews);
     this.matchingStylizedImagePreviews = this.stylizedImagePreviews;
   }
 
@@ -82,11 +82,15 @@ export class CreateComponent implements OnInit {
 
   onChangeSelectedStyleIndex(index: number) {
     this.selectedStyleImageIndex = index;
-    this.matchingStylizedImagePreviews = this.stylizedImagePreviews.filter(
-      (stylizedImagePreview) =>
-        stylizedImagePreview.appliedStyleImageName ===
+    this.matchingStylizedImagePreviews =
+      stylizedImagePreviews[
         this.styleImages[this.selectedStyleImageIndex].name
-    );
+      ];
+    // this.matchingStylizedImagePreviews = stylizedImagePreviews.filter(
+    //   (stylizedImagePreview) =>
+    //     stylizedImagePreview.appliedStyleImageName ===
+    //     this.styleImages[this.selectedStyleImageIndex].name
+    // );
   }
 
   async onSubmitForm(email: string) {
