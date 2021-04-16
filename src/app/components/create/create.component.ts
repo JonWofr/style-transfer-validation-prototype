@@ -9,6 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { AngularFireAnalytics } from '@angular/fire/analytics';
 import { stylizedImagePreviews } from 'src/assets/json-variables/stylizedImages';
 import { styleImages } from 'src/assets/json-variables/styles';
+import * as firebase from 'firebase/app';
+
+declare const fbq: Function;
 
 @Component({
   selector: 'page-create',
@@ -108,14 +111,18 @@ export class CreateComponent implements OnInit {
           contentImagePublicUrl,
           styleImagePublicUrl: selectedStyleImage.publicUrl,
           status: 'PENDING',
+          creationDate: firebase.default.firestore.Timestamp.fromMillis(
+            Date.now()
+          ),
         };
         await colRef.add(stylizationJob);
         this.hasCreatedNewDocument = true;
         this.submittedImagesCount = querySize + 1;
         this.shouldShowSpinner = false;
-        this.analytics.logEvent('purchase', {
+        this.analytics.logEvent('generate_lead', {
           value: selectedStyleImage.name,
         });
+        fbq('track', 'Lead', { content_name: selectedStyleImage.name });
       } else {
         this.hasCreatedNewDocument = false;
         this.submittedImagesCount = querySize;

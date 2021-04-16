@@ -50,10 +50,12 @@ import { PaymentFailureComponent } from './components/payment-failure/payment-fa
     { provide: BUCKET, useValue: 'petai-validation.appspot.com' },
     {
       provide: SETTINGS,
-      useValue: {
-        host: 'localhost:8080',
-        ssl: false,
-      },
+      useValue: !environment.production
+        ? {
+            host: 'localhost:8080',
+            ssl: false,
+          }
+        : undefined,
     },
     ScreenTrackingService,
     UserTrackingService,
