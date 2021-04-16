@@ -8,6 +8,7 @@
   align-items: center;
   img.demo-image {
     width: 100%;
+    border-radius: 15px;
   }
   .info-text {
     color: white;
@@ -36,7 +37,7 @@
           margin-bottom: 0;
         }
         img.decorater {
-          height: 3rem;
+          max-height: 4rem;
           margin-right: 1rem;
         }
       }

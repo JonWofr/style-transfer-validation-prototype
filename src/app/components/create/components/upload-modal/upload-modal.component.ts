@@ -9,5 +9,5 @@ export class UploadModalComponent {
   @Output() selectFile = new EventEmitter<File>();
   @Output() closeModal = new EventEmitter<void>();
 
-  dataProtectionChecked = false;
+  dataProtectionChecked = true;
 }

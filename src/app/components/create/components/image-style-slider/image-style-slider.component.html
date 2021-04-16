@@ -12,10 +12,13 @@
   <button
     [class.btn-hide]="selectedStyleIndex === undefined"
     [class.btn-back]="shouldShowFitStyleView"
+    [ngClass]="{
+      'animate__animated animate__pulse animate__infinite': showAttentionSeekerApplyStyle
+    }"
     class="apply-style-btn"
     (click)="onChangeShouldShowFitStyleView()"
   >
-    {{ shouldShowFitStyleView ? "Back" : "Apply This Style" }}
+    {{ shouldShowFitStyleView ? "Back" : "Apply Selected Style" }}
   </button>
 
   <create-submit
@@ -45,11 +48,26 @@
       </div>
     </div>
 
-    <h2 *ngIf="selectedStyleIndex !== undefined">Artworks with this Style</h2>
+    <ng-container *ngIf="selectedStyleIndex !== undefined">
+      <h2 style="margin-bottom: 1rem; margin-top: 2rem">
+        Artworks with this Style
+      </h2>
+      <img
+        *ngFor="
+          let matchingStylizedImagePreview of matchingStylizedImagePreviews;
+          let i = index
+        "
+        [src]="matchingStylizedImagePreview.publicUrl"
+        alt=""
+        class="preview-images"
+      />
+    </ng-container>
+
     <h2 *ngIf="!uploadedImage">Created Artworks</h2>
 
+    <!-- selectedStyleIndex !== undefined ||  -->
     <div
-      *ngIf="selectedStyleIndex !== undefined || !uploadedImage"
+      *ngIf="!uploadedImage"
       class="animate__animated swiper-container swiper-img-style img-swiper"
       #imgSwiper
       [class.animate__fadeInUpBig]="!isHorizontalMode"

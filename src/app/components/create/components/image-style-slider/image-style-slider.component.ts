@@ -53,9 +53,19 @@ export class ImageStyleSliderComponent implements OnInit {
   }[] = [];
   @Input() styleImages: StyleImage[] = [];
 
-  @Input() uploadedImage = false;
+  _uploadedImage = false;
+
+  get uploadedImage() {
+    return this._uploadedImage;
+  }
+  @Input() set uploadedImage(hasUploaded) {
+    this._uploadedImage = hasUploaded;
+    this.imgSwiper = undefined;
+    this.showAttentionSeekerApplyStyle = true;
+  }
 
   showAttentionSeekerUpload = true;
+  showAttentionSeekerApplyStyle = false;
 
   @Input() shouldShowFitStyleView = false;
   @Output() changeShouldShowFitStyleView = new EventEmitter<boolean>();
@@ -107,6 +117,7 @@ export class ImageStyleSliderComponent implements OnInit {
     if (el && this.styleSwiper === undefined) {
       this.styleSwiper = new Swiper('.style-swiper', {
         slidesPerView: 'auto',
+        freeMode: true,
         spaceBetween: 16,
         slidesOffsetAfter: 16,
         breakpoints: {
@@ -130,8 +141,10 @@ export class ImageStyleSliderComponent implements OnInit {
 
   onChangeShouldShowFitStyleView() {
     this.changeShouldShowFitStyleView.emit(!this.shouldShowFitStyleView);
+    this.showAttentionSeekerApplyStyle = false;
     if (this.shouldShowFitStyleView) {
       this.styleSwiper = undefined;
+      this.imgSwiper = undefined;
     }
   }
 
@@ -151,7 +164,6 @@ export class ImageStyleSliderComponent implements OnInit {
     if (index !== undefined) {
       this.selectedStyleIndex = index;
       this.changeSelectedStyleIndex.emit(index);
-      this.imgSwiper.slideTo(0);
     }
   }
 

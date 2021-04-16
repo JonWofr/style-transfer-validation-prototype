@@ -18,11 +18,6 @@ export const styleImages: StyleImage[] = [
   },
   {
     publicUrl:
-      'https://storage.googleapis.com/petai-validation.appspot.com/style-images/brown-watercolor.jpg',
-    name: 'Watercolor',
-  },
-  {
-    publicUrl:
       'https://storage.googleapis.com/petai-validation.appspot.com/style-images/colorful-shapes.jpg',
     name: 'Colorful Shapes',
   },
@@ -35,5 +30,10 @@ export const styleImages: StyleImage[] = [
     publicUrl:
       'https://storage.googleapis.com/petai-validation.appspot.com/style-images/rusty-white.jpg',
     name: 'Rusty White',
+  },
+  {
+    publicUrl:
+      'https://storage.googleapis.com/petai-validation.appspot.com/style-images/brown-watercolor.jpg',
+    name: 'Watercolor',
   },
 ];

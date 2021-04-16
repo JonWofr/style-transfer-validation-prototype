@@ -92,6 +92,16 @@ div.loading-indicator {
   }
 }
 
+.preview-images {
+  border-radius: 10px;
+  width: calc(100% - 1rem);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  &:last-child {
+    margin-bottom: 2rem;
+  }
+}
+
 .swiper-img-style.style-swiper {
   .swiper-slide {
     cursor: pointer;
